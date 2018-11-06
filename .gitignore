@@ -9,3 +9,6 @@
 # these are used to commit empty directories
 !.gitkeep
 !.htaccess
+/.settings/
+/.buildpath
+/.project
