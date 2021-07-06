@@ -1,8 +1,6 @@
 <?php
 // @codingStandardsIgnoreFile
 
-require 'Rfc822.php';
-
 /**
  * This parser extends the RFC822 standard to allow XML entities and UTF-8 characters in atoms and quoted-strings
  * @author Hamish Friedlander

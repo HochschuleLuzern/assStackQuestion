@@ -17,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->libdir . '/filterlib.php');
+//require_once($CFG->libdir . '/filterlib.php');
 require_once(__DIR__ . '/mathsoutputfilterbase.class.php');
 
 
