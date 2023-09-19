@@ -414,7 +414,7 @@ class assStackQuestionUtils
 	public static function _getLatex($text): string
 	{
         $display_data = assStackQuestionConfig::_getStoredSettings('display');
-        $allow_jsx = (bool) $display_data['allow_jsx_graph'];
+        $allow_jsx = in_array('allow_jsx_graph', $display_data) ? (bool) $display_data['allow_jsx_graph'] : false;
 
         if ($allow_jsx) {
             $matches = [];
