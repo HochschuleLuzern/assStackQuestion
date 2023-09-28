@@ -706,12 +706,14 @@ class assStackQuestionRenderer
             // Validating as teacher at this stage removes the problem of "allowWords" which
             // we don't have access to.  This effectively allows any words here.  But the
             // student's answer has already been through validation.
-            $cs = stack_ast_container::make_from_teacher_source($ans, '', new stack_cas_security());
-            // That all said, we then need to manually add in nouns to ensure these are protected.
-            $cs->set_nounify(2);
-            $cs->set_key($name);
-            $cs->set_keyless(false);
-            $prt_state->get_cas_context()->add_statement($cs);
+            if(strlen( $ans ) !== 0) {
+                $cs = stack_ast_container::make_from_teacher_source($ans, '', new stack_cas_security());
+                // That all said, we then need to manually add in nouns to ensure these are protected.
+                $cs->set_nounify(2);
+                $cs->set_key($name);
+                $cs->set_keyless(false);
+                $prt_state->get_cas_context()->add_statement($cs);
+            }
         }
 
         if ($feedback_bits) {
