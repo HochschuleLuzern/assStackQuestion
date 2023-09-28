@@ -159,7 +159,8 @@ class assStackQuestionRenderer
 
                     if (is_a($prt_state, 'stack_potentialresponse_tree_state')) {
                         $prt_state->set_cas_context($question->getSession(),$question->getSeed(),true);
-                        $render = self::renderPRTFeedback($prt_state, $question);
+
+                        $render = self::renderPRTFeedback($prt_state, $prt_name, $question);
                         if(strlen($render)){
                             $prt_feedback .= $render;
                         }else{
@@ -333,10 +334,10 @@ class assStackQuestionRenderer
             $prt_state = $question->getPrtResult($prt_name, $user_solution, true);
 
             //Manage LaTeX explicitly
-            $rendered = assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $question)));
+            $rendered = assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $prt_name, $question)));
             if (is_a($prt_state, 'stack_potentialresponse_tree_state')) {
                 $prt_state->set_cas_context($question->getSession(),$question->getSeed(),true);
-                $rendered = assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $question)));
+                $rendered = assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state,$prt_name, $question)));
             }else{
                 $rendered = '';
             }
@@ -355,7 +356,7 @@ class assStackQuestionRenderer
 		foreach ($feedback_placeholders_specific_feedback as $prt_name) {
             $prt_state = $question->getPrtResult($prt_name, $user_solution, true);
 
-            $question_text .= '</br>'.assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $question)));
+            $question_text .= '</br>'.assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $prt_name, $question)));
 		}
 
 		//Validation
@@ -436,7 +437,7 @@ class assStackQuestionRenderer
 				$prt_state = $evaluation['prts'][$prt_name];
                 $prt_state->set_cas_context($question->getSession(),$question->getSeed(),true);
 				//Manage LaTeX explicitly
-				$prt_feedback .= assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $question)));
+				$prt_feedback .= assStackQuestionUtils::_getLatex(stack_maxima_latex_tidy(self::renderPRTFeedback($prt_state, $prt_name, $question)));
 			}
 
 			//Replace Placeholders
@@ -506,7 +507,7 @@ class assStackQuestionRenderer
                     $prt_state = $question->getPrtResult($prt_name, $user_answer, true);
 
                     //Manage LaTeX explicitly
-                    $prt_feedback .= assStackQuestionUtils::_getLatex(self::renderPRTFeedback($prt_state, $question));
+                    $prt_feedback .= assStackQuestionUtils::_getLatex(self::renderPRTFeedback($prt_state, $prt_name, $question));
 
 				} else {
                     $prt_feedback .= '';
@@ -684,14 +685,36 @@ class assStackQuestionRenderer
 	 * @param stack_potentialresponse_tree_state $prt_state
 	 * @return string HTML Code with the rendered PRT feedback
 	 */
-	public static function renderPRTFeedback(stack_potentialresponse_tree_state $prt_state, $question = null): string
+	public static function renderPRTFeedback(stack_potentialresponse_tree_state $prt_state, $prt_name, $question): string
 	{
         global $tpl;
         $feedback = '';
         $feedback_bits = $prt_state->get_feedback();
         $feedback_array = array();
 
-		if ($feedback_bits) {
+        $prt_info = $question->prts[$prt_name];
+
+        // Add the student's responses, but only those needed by this prt.
+        // Some irrelevant but invalid answers might break the CAS connection.
+        $answers = $question->getUserResponse();
+        foreach ($prt_info->get_required_variables(array_keys($answers)) as $name) {
+            if (array_key_exists($name . '_val', $answers)) {
+                $ans = $answers[$name . '_val'];
+            } else {
+                $ans = $answers[$name];
+            }
+            // Validating as teacher at this stage removes the problem of "allowWords" which
+            // we don't have access to.  This effectively allows any words here.  But the
+            // student's answer has already been through validation.
+            $cs = stack_ast_container::make_from_teacher_source($ans, '', new stack_cas_security());
+            // That all said, we then need to manually add in nouns to ensure these are protected.
+            $cs->set_nounify(2);
+            $cs->set_key($name);
+            $cs->set_keyless(false);
+            $prt_state->get_cas_context()->add_statement($cs);
+        }
+
+        if ($feedback_bits) {
 			$format = "1";
 			foreach ($feedback_bits as $bit) {
 				$feedback_array[] = $bit->feedback;

@@ -144,6 +144,10 @@ class stack_potentialresponse_tree_state {
         }
     }
 
+
+    public function get_cas_context(): stack_cas_session2 {
+        return $this->cascontext;
+    }
     /**
      * Store the CAS context, so we can use it later if we want to output the
      * feedback.
