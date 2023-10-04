@@ -987,9 +987,9 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
         //RETURN DATA FROM
         /** @var ILIAS\HTTP\Wrapper\SuperGlobalDropInReplacement $_POST */
         $user_response_from_post = $_POST;
-        //unset($user_response_from_post["formtimestamp"]);
-        //unset($user_response_from_post["cmd"]);
 
+        // following only to get the matrix width and height set
+        $this-> initialiseQuestionFromSeed();
         $user_solutions = assStackQuestionUtils::_adaptUserResponseTo($user_response_from_post, $this);
 
         //Debug

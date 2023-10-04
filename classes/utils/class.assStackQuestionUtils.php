@@ -588,14 +588,25 @@ class assStackQuestionUtils
 	public static function _adaptUserResponseTo(ILIAS\HTTP\Wrapper\SuperGlobalDropInReplacement $user_response, assStackQuestion $question)
 	{
 		$adapted_user_response = array();
+
 		foreach ($question->getInputs() as $input_name => $input) {
-			if ($user_response->offsetExists("xqcas_" . $question->getId() . "_".$input_name) !== null) {
+			if ($user_response->offsetExists("xqcas_" . $question->getId() . "_".$input_name)) {
 				$adapted_user_response[$input_name] = $user_response->offsetGet("xqcas_" . $question->getId() . "_".$input_name);
 			}
+            else{
+                if ($input instanceof stack_matrix_input){
+                    // All the matrix elements.
+                    for ($i = 0; $i < $input->height; $i++) {
+                        for ($j = 0; $j < $input->width; $j++) {
+                            $name = $input_name . '_sub_' . $i . '_' . $j;
+                            $adapted_user_response[$name] = $user_response->offsetGet("xqcas_" . $question->getId() . "_".$name);;
+                        }
+                    }
+                }
+            }
 		}
 		return $adapted_user_response;
 	}
-
 
 	public static function stack_output_castext($castext)
 	{
