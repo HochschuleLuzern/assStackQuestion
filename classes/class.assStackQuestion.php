@@ -1214,7 +1214,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
     public function saveToDb($original_id = ""): void
     {
         if ($this->getTitle() != "" and $this->getAuthor() != "" and $this->getQuestion() != "") {
-            $this->saveQuestionDataToDb((int)$original_id);
+            $this->saveQuestionDataToDb(empty($original_id) ? null : (int)$original_id);
             $this->saveAdditionalQuestionDataToDb();
 
             parent::saveToDb();
