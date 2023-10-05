@@ -420,6 +420,8 @@ $string['Maxima_DivisionZero']  = 'Division durch Null.';
 $string['Lowest_Terms']   = 'Ihre Antwort enthält Brüche, die nicht vollständig gekürzt sind. Bitte kürzen Sie entsprechende Faktoren heraus und versuchen Sie es nochmal.';
 $string['Illegal_floats'] = 'Ihre Antwort enthält Fließkommazahlen, welche in dieser Aufgabe nicht erlaubt sind. Bitte geben Sie die Zahlen als Brüche ein. So sollten Sie 1/3 und nicht 0.3333 (welche nur eine Annäherung darstellt) eingeben.';
 $string['qm_error'] = 'Ihre Antwort ist nicht vollständig. Bitte füllen Sie alle Lücken in der Matrix aus.';
+$string['ValidateVarsSpurious']   = 'Diese Variable sind nicht nötig: {$a->m0}.';
+$string['ValidateVarsMissing']   = 'Diese Variable fehlen: {$a->m0}.';
 
 // Answer tests.
 $string['stackOptions_AnsTest_values_AlgEquiv']            = "AlgEquiv";

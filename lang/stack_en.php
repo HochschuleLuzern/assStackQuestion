@@ -662,7 +662,8 @@ $string['Equiv_Illegal_list']  = 'Lists are not allowed when reasoning by equiva
 $string['Equiv_Illegal_matrix']  = 'Matrices are not allowed when reasoning by equivalence.';
 $string['CommaError']     = 'Your answer contains commas which are not part of a list, set or matrix.  <ul><li>If you meant to type in a list, please use <tt>{...}</tt>,</li><li>If you meant to type in a set, please use <tt>{...}</tt>.</li></ul>';
 $string['Bad_assignment']   = 'When listing the values of a variable you should do so in the following way: {$a->m0}.  Please modify your input.';
-
+$string['ValidateVarsSpurious']   = 'These variables are not needed: {$a->m0}.';
+$string['ValidateVarsMissing']   = 'These variables are missing: {$a->m0}.';
 
 // Answer tests.
 $string['stackOptions_AnsTest_values_AlgEquiv']            = "AlgEquiv";

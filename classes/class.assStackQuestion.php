@@ -989,7 +989,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
         $user_response_from_post = $_POST;
 
         // following only to get the matrix width and height set
-        $this-> initialiseQuestionFromSeed();
+        //$this-> initialiseQuestionFromSeed();
         $user_solutions = assStackQuestionUtils::_adaptUserResponseTo($user_response_from_post, $this);
 
         //Debug
