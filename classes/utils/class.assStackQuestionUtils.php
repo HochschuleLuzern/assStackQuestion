@@ -596,11 +596,15 @@ class assStackQuestionUtils
             else{
                 if ($input instanceof stack_matrix_input){
                     // All the matrix elements.
-                    for ($i = 0; $i < $input->height; $i++) {
-                        for ($j = 0; $j < $input->width; $j++) {
-                            $name = $input_name . '_sub_' . $i . '_' . $j;
-                            $adapted_user_response[$name] = $user_response->offsetGet("xqcas_" . $question->getId() . "_".$name);;
+                    $i = 0;
+                    $j = 0;
+                    while ($user_response->offsetExists("xqcas_" . $question->getId() . "_".$input_name . '_sub_' . $i . '_' . $j)) {
+                       while ($user_response->offsetExists("xqcas_" . $question->getId() . "_".$input_name . '_sub_' . $i . '_' . $j)) {
+                            $adapted_user_response[$input_name . '_sub_' . $i . '_' . $j] = $user_response->offsetGet("xqcas_" . $question->getId() . "_".$input_name . '_sub_' . $i . '_' . $j);;
+                            $j = $j + 1;
                         }
+                        $i = $i + 1;
+                        $j = 0;
                     }
                 }
             }
