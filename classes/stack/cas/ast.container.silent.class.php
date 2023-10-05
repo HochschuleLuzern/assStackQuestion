@@ -504,7 +504,10 @@ class stack_ast_container_silent implements cas_evaluatable {
             $feedback = array();
             // Ensure feedback is given only once and translate it.
             foreach ($this->feedback as $fb) {
-                $feedback[trim(stack_maxima_translate($fb))] = true;
+                // this 'ValidateVarsSpurious' feedback is wrong - ignore
+                if (strpos($fb, 'ValidateVarsSpurious') === false) {
+                    $feedback[trim(stack_maxima_translate($fb))] = true;
+                }
             }
             return trim(implode(' ', array_keys($feedback)));
         }

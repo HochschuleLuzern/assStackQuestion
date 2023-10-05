@@ -794,8 +794,11 @@ abstract class stack_input {
         // Did the CAS throw any errors?  Any feedback will be an error message.
         $feedback = $answer->get_feedback();
         if ($feedback !== '') {
-            $errors[] = $feedback;
-            $valid = false;
+            // this 'ValidateVarsSpurious' feedback is wrong - ignore
+            if (strpos($feedback, 'ValidateVarsSpurious') === false) {
+                $errors[] = $feedback;
+                $valid = false;
+            }
         }
 
         if ($errors || $errors === array()) {
