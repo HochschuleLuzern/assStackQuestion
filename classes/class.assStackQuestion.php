@@ -1992,6 +1992,9 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             }
 
             //Validate student response
+            if ($this->getCached('statement-qv') !== null) {
+                $this->inputs[$name]->add_contextsession( new stack_secure_loader($this->getCached('statement-qv'), 'qv'));
+            }
             if (array_key_exists($name, $this->inputs)) {
                 if ($sets_question_object) {
                     $this->setInputStates($this->inputs[$name]->validate_student_response($response, $this->options, $teacher_answer, $this->security, false), $name);
@@ -2350,7 +2353,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
      * @param string $key
      * @return array|null
      */
-    private function getCached(string $key)
+    public function getCached(string $key)
     {
         // Do we have that particular thing in the cache?
         if ($this->compiled_cache === null || !array_key_exists($key, $this->compiled_cache)) {
