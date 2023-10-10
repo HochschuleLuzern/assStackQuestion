@@ -975,6 +975,9 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
 
         // loads additional stuff like suggested solutions
         parent::loadFromDb($question_id);
+
+        $session = new stack_cas_session2([], $this->options, $this->seed);
+        $this->setSession($session);
     }
 
     /**
