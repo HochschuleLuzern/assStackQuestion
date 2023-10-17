@@ -44,12 +44,12 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
     /**
      * @var int
      */
-    private int $hidden = 0;
+    public int $hidden = 0;
 
     /**
      * @var float
      */
-    private float $penalty = 0.0;
+    public float $penalty = 0.0;
 
     /**
      * @var array The user answer given in each input
