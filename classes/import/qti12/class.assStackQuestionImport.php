@@ -67,7 +67,6 @@ class assStackQuestionImport extends assQuestionImport
         $this->object->setQuestion($this->object->QTIMaterialToString($item->getQuestiontext()));
         $this->object->setObjId($questionpool_id);
         $this->object->setPoints((float)$item->getMetadataEntry("POINTS"));
-        $this->object->setEstimatedWorkingTime($duration["h"], $duration["m"], $duration["s"]);
 
         $this->object->saveQuestionDataToDb();
 

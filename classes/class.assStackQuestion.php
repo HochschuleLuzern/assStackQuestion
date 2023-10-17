@@ -706,7 +706,6 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
 
         require_once("./Services/RTE/classes/class.ilRTE.php");
         $this->setQuestion(ilRTE::_replaceMediaObjectImageSrc($data["question_text"] ?? '', 1));
-        //$this->setEstimatedWorkingTime(substr($data["working_time"], 0, 2), substr($data["working_time"], 3, 2), substr($data["working_time"], 6, 2));
 
         $options_from_db_array = assStackQuestionDB::_readOptions($this->getId());
         if ($options_from_db_array === -1) {
