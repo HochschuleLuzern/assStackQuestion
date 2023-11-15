@@ -347,7 +347,7 @@ class stack_dropdown_input extends stack_input {
         return '';
     }
 
-    protected function validate_contents($contents, $basesecurity, $localoptions) {
+    protected function validate_contents($contents, $basesecurity, $localoptions, $filteroptions = array()) {
         $valid = true;
         $errors = $this->errors;
         $notes = array();
@@ -359,7 +359,7 @@ class stack_dropdown_input extends stack_input {
         // In the case of dropdown create the object directly here.
         $value = $this->contents_to_maxima($contents);
 
-        $answer = stack_ast_container::make_from_student_source($value, '', $secrules, $filterstoapply);
+        $answer = stack_ast_container::make_from_student_source($value, '', $secrules, $filterstoapply, $filteroptions);
         $answer->get_valid();
 
         $note = $answer->get_answernote(true);

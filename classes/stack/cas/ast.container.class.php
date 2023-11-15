@@ -296,8 +296,19 @@ class stack_ast_container extends stack_ast_container_silent implements cas_late
         }
 
         // Otherwise set a key.
+        // root (ast) can be null if there was a syntax failure during parsing
         $nop = new MP_Operation(':', new MP_Identifier($key), $root);
-        $root->parentnode->replace($root, $nop);
+        if($root != null){
+            if($root->parentnode != null){
+                $root->parentnode->replace($root, $nop);
+            }
+            else{
+                $root->replace($root, $nop);
+            }
+        }
+        else{
+            $root =$nop;
+        }
     }
 
     /**

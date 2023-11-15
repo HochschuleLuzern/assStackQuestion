@@ -128,7 +128,9 @@ class stack_ast_container_silent implements cas_evaluatable {
 
         // Force the security filter to use 's'.
         if (isset($filteroptions['998_security'])) {
-            $filteroptions['998_security']['security'] = 's';
+            if (!isset($filteroptions['998_security']['security'])) {
+                $filteroptions['998_security']['security'] = 's';
+            }
         } else {
             $filteroptions['998_security'] = array('security' => 's');
         }

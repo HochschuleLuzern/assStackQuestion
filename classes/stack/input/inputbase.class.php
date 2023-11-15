@@ -117,7 +117,7 @@ abstract class stack_input {
      * @var bool.
      */
     protected $runtime = true;
-
+    protected $is_tcontents = false;
     /**
      * Constructor
      *
@@ -653,11 +653,15 @@ abstract class stack_input {
         $validationmethod = $this->get_validation_method();
         $checktype = false;
         if ('checktype' == $validationmethod || 'units' == $validationmethod || 'unitsnegpow' == $validationmethod) {
+
             $checktype = true;
             $tresponse = $this->maxima_to_response_array($teacheranswer);
             $tcontents = $this->response_to_contents($tresponse);
+            $filteroptions = array();
+            // its teacher rather than student contents, so apply teacher security
+            $filteroptions['998_security'] = array('security' => 't');
             list($tvalid, $terrors, $tnotes, $tmodifiedcontents, $tcaslines)
-                = $this->validate_contents($tcontents, $secrules, $localoptions);
+                = $this->validate_contents($tcontents, $secrules, $localoptions, $filteroptions);
         } else {
             $tcaslines = array();
         }
@@ -915,7 +919,7 @@ abstract class stack_input {
      *                                         appear in the student's input.
      * @return array of the validity, errors strings, modified contents and caslines.
      */
-    protected function validate_contents($contents, $basesecurity, $localoptions) {
+    protected function validate_contents($contents, $basesecurity, $localoptions, $filteroptions = array()) {
 
         $errors = $this->extra_validation($contents);
         $valid = !$errors;
@@ -930,7 +934,7 @@ abstract class stack_input {
                 // One of those things logic nouns hid.
                 $val = '';
             }
-            $answer = stack_ast_container::make_from_student_source($val, '', $secrules, $filterstoapply);
+            $answer = stack_ast_container::make_from_student_source($val, '', $secrules, $filterstoapply, $filteroptions);
 
             $caslines[] = $answer;
             $valid = $valid && $answer->get_valid();
@@ -1207,7 +1211,7 @@ abstract class stack_input {
 
         // TODO: refactor this ast creation away.
         $val = $state->contentsdisplayed;
-        $cs = stack_ast_container::make_from_teacher_source($state->contentsdisplayed,
+        $cs = stack_ast_container::make_from_teacher_source($state->contentsmodified,
                 '', new stack_cas_security(), array());
         if ($cs->get_valid()) {
             $val = $cs->get_inputform();

@@ -208,7 +208,7 @@ class stack_equiv_input extends stack_input {
      * @param array $contents the content array of the student's input.
      * @return array of the validity, errors strings and modified contents.
      */
-    protected function validate_contents($contents, $basesecurity, $localoptions) {
+    protected function validate_contents($contents, $basesecurity, $localoptions, $filteroptions = array()) {
 
         // This input re-defines validate_contents, and so does not make use of extra_validation methods.
         $errors = array();
@@ -220,7 +220,7 @@ class stack_equiv_input extends stack_input {
 
         foreach ($contents as $index => $val) {
             $answer = stack_ast_container::make_from_student_source($val, '', $secrules, $filterstoapply,
-                    array(), 'Equivline');
+                $filteroptions, 'Equivline');
 
             // Is the student permitted to include comments in their answer?
             if (!$this->extraoptions['comments'] && $answer->is_string()) {
