@@ -650,7 +650,6 @@ abstract class stack_input {
             throw new stack_exception('stack_input: validate_student_response: options not of class stack_options');
         }
         $localoptions = clone $options;
-        $localoptions->set_option('simplify', false);
         if ($this->get_extra_option('simp')) {
             $localoptions->set_option('simplify', true);
         }
