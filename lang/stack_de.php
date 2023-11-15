@@ -393,6 +393,7 @@ $string['stackCas_MissingStars']            = 'Anscheinend fehlen "*" Zeichen. V
 $string['stackCas_unknownFunction']         = 'Unbekannte Funktion: {$a->forbid}.';
 $string['stackCas_unsupportedKeyword']      = 'Nicht unterstütztes Schlüsselwort: {$a->forbid}.';
 $string['stackCas_forbiddenWord']           = 'Der Ausdruck {$a->forbid} ist verboten.';
+$string['stackCas_forbiddenVariable']       = 'Der Ausdruck darf kein Variabel ({$a->forbid}) referenzieren.';
 $string['stackCas_bracketsdontmatch']       = 'Die Klammern im Ausdruck sind falsch verschachtelt: {$a->cmd}.';
 
 // Used in cassession.class.php.
