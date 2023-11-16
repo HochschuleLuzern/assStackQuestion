@@ -395,6 +395,7 @@ $string['stackCas_unsupportedKeyword']      = 'Nicht unterstütztes Schlüsselwo
 $string['stackCas_forbiddenWord']           = 'Der Ausdruck {$a->forbid} ist verboten.';
 $string['stackCas_forbiddenVariable']       = 'Der Ausdruck darf kein Variabel ({$a->forbid}) referenzieren.';
 $string['stackCas_bracketsdontmatch']       = 'Die Klammern im Ausdruck sind falsch verschachtelt: {$a->cmd}.';
+$string['stackCas_errorpos']                = 'Fehler in der Position: {$a->expr}.';
 
 // Used in cassession.class.php.
 $string['stackCas_CASError']                = 'Das CAS lieferte folgende Fehler zurück:';
