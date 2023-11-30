@@ -1149,3 +1149,18 @@ $string['healthuncachedstack_CAS_calculation'] = 'Expected CAS calculation : {$a
 
 //Solve thttps://mantis.ilias.de/view.php?id=24003
 $string['stackCas_unencpsulated_comma'] = 'In dem eingegebenen Ausdruck erscheint ein Komma an ungewöhnlicher Stelle. Kommas werden zur Trennung von Elementen in Listen, Mengen usw. verwendet. Bitte verwenden Sie in Dezimalzahlen anstelle eines Kommas einen Dezimalpunkt.';
+$string['equiv_SAMEROOTS']               = '(Same roots)';
+$string['equiv_ANDOR']                   = 'and/or confusion!';
+$string['equiv_MISSINGVAR']              = 'Missing assignments';
+$string['equiv_ASSUMEPOSVARS']           = 'Assume +ve vars';
+$string['equiv_ASSUMEPOSREALVARS']       = 'Assume +ve real vars';
+$string['equiv_LET']                     = 'Let';
+// We could localise the strings below using \vee, \wedge etc.
+$string['equiv_AND']                     = 'and';
+$string['equiv_OR']                      = 'or';
+$string['equiv_NOT']                     = 'not';
+$string['equiv_NAND']                    = 'nand';
+$string['equiv_NOR']                     = 'nor';
+$string['equiv_XOR']                     = 'xor';
+$string['equiv_XNOR']                    = 'xnor';
+$string['equiv_IMPLIES']                 = 'implies';
