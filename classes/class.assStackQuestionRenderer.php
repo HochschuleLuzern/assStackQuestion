@@ -220,7 +220,7 @@ class assStackQuestionRenderer
 		$student_solutions = $question->getTestOutputSolutions($active_id, $pass);
 
         if (empty($student_solutions)) {
-            return "_renderQuestionTextForTestResults ERROR";
+            return "";
         }
 
         //Old Test

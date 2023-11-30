@@ -220,7 +220,11 @@ class assStackQuestionGUI extends assQuestionGUI
 			if (!$show_correct_solution) {
 				//TEXT
 				$solution_output = assStackQuestionRenderer::_renderQuestionTextForTestResults($this->object, $active_id, $pass);
-			} else {
+                if(empty($solution_output)){
+                    /* better than error text, but TODO: should show correction icons */
+                    $solution_output = $this->getPreview(true, false);
+                }
+            } else {
 				//SOLUTION
                 $general_feedback = assStackQuestionRenderer::_renderGeneralFeedback($this->object);
 
