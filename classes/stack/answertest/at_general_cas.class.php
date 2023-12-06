@@ -118,8 +118,18 @@ class stack_answertest_general_cas extends stack_anstest {
         $ta->set_key('STACKTA');
 
         $ops = stack_ast_container::make_from_teacher_source('STACKOP:true', '', new stack_cas_security());
-        $result = stack_ast_container::make_from_teacher_source("result:{$this->casfunction}(STACKSA,STACKTA)", '',
-            new stack_cas_security());
+
+        // Hack because since 2022 Maxima does not round calculated floating point variable multipliers when considering algebraic equivalence of expressions
+        if ($this->casfunction == 'ATAlgEquiv'){
+            // do a simple string comparison on simplified expressions
+            $result = stack_ast_container::make_from_teacher_source("result:{$this->casfunction}(string(simplify(STACKSA)),string(simplify(STACKTA)))", '',
+                new stack_cas_security());
+        }
+        else{
+            $result = stack_ast_container::make_from_teacher_source("result:{$this->casfunction}(STACKSA,STACKTA)", '',
+                new stack_cas_security());
+        }
+
         if (stack_ans_test_controller::process_atoptions($this->atname)) {
             if ($this->atoption->is_correctly_evaluated()) {
                 $ops = stack_ast_container::make_from_teacher_source($this->atoption->get_value());
