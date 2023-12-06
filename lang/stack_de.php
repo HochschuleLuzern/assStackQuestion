@@ -1018,6 +1018,11 @@ $string['stackCas_spaces'] = 'Leerzeichen gefunden im Ausdruck {$a->expr}.';
 $string['stackCas_spuriousop'] = 'Unbekannter Operator: {$a->cmd}.';
 $string['stackCas_unknownFunction'] = 'Unbekannte Funktion: {$a->forbid}.';
 $string['stackCas_unsupportedKeyword'] = 'Nicht unterstütztes Schlüsselwort: {$a->forbid}.';
+
+// Used in keyval.class.php.
+$string['stackCas_inputsdefined']           = 'Man darf input Namen nicht als Variablen benutzen. Sie haben versucht <code>{$a}</code> zu definieren';
+$string['stackCas_overlyComplexSubstitutionGraphOrRandomisation']           = 'Überkomplizierte Substitution Graph oder Randomisierung';
+
 $string['stackDoc_404'] = 'Fehler 404';
 $string['stackDoc_404message'] = 'Datei nicht gefunden.';
 $string['stackDoc_directoryStructure'] = 'Verzeichnisstruktur';

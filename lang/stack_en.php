@@ -622,6 +622,7 @@ $string['stackCas_failedReturnOne']         = 'CAS failed to return some data.';
 
 // Used in keyval.class.php.
 $string['stackCas_inputsdefined']           = 'You may not use input names as variables.  You have tried to define <code>{$a}</code>';
+$string['stackCas_overlyComplexSubstitutionGraphOrRandomisation']           = 'Overly complex substitution graph or randomisation';
 
 // Used in castext.class.php.
 $string['stackCas_MissingAt']               = 'You are missing a <code>@</code> sign. ';
