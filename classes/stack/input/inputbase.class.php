@@ -1211,7 +1211,7 @@ abstract class stack_input {
 
         // TODO: refactor this ast creation away.
         $val = $state->contentsdisplayed;
-        $cs = stack_ast_container::make_from_teacher_source($state->contentsmodified,
+        $cs = stack_ast_container::make_from_teacher_source($state->contentsdisplayed,
                 '', new stack_cas_security(), array());
         if ($cs->get_valid()) {
             $val = $cs->get_inputform();
