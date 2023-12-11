@@ -575,9 +575,9 @@ class assStackQuestionGUI extends assQuestionGUI
 
 					$prt_from_post_array[$prt_name]['nodes'][$node_id]['true_next_node'] = ((isset($_POST[$prefix . '_pos_next']) and $_POST[$prefix . '_pos_next'] != null) ? (int)trim(ilUtil::secureString($_POST[$prefix . '_pos_next'])) : -1);
 					$prt_from_post_array[$prt_name]['nodes'][$node_id]['false_next_node'] = ((isset($_POST[$prefix . '_neg_next']) and $_POST[$prefix . '_neg_next'] != null) ? (int)trim(ilUtil::secureString($_POST[$prefix . '_neg_next'])) : -1);
-					$prt_from_post_array[$prt_name]['nodes'][$node_id]['answer_test'] = ((isset($_POST[$prefix . '_answer_test']) and $_POST[$prefix . '_answer_test'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_answer_test'])) : '');
-					$prt_from_post_array[$prt_name]['nodes'][$node_id]['sans'] = ((isset($_POST[$prefix . '_student_answer']) and $_POST[$prefix . '_student_answer'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_student_answer'])) : '');
-					$prt_from_post_array[$prt_name]['nodes'][$node_id]['tans'] = ((isset($_POST[$prefix . '_teacher_answer']) and $_POST[$prefix . '_teacher_answer'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_teacher_answer'])) : '');
+					$prt_from_post_array[$prt_name]['nodes'][$node_id]['answer_test'] = ((isset($_POST[$prefix . '_answer_test']) and $_POST[$prefix . '_answer_test'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_answer_test'], false)) : '');
+					$prt_from_post_array[$prt_name]['nodes'][$node_id]['sans'] = ((isset($_POST[$prefix . '_student_answer']) and $_POST[$prefix . '_student_answer'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_student_answer'], false)) : '');
+					$prt_from_post_array[$prt_name]['nodes'][$node_id]['tans'] = ((isset($_POST[$prefix . '_teacher_answer']) and $_POST[$prefix . '_teacher_answer'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_teacher_answer'], false)) : '');
 					$prt_from_post_array[$prt_name]['nodes'][$node_id]['test_options'] = ((isset($_POST[$prefix . '_options']) and $_POST[$prefix . '_options'] != null) ? trim(ilUtil::secureString($_POST[$prefix . '_options'])) : '');
 					$prt_from_post_array[$prt_name]['nodes'][$node_id]['quiet'] = ((isset($_POST[$prefix . '_quiet']) and $_POST[$prefix . '_quiet'] != null) ? (int)trim(ilUtil::secureString($_POST[$prefix . '_quiet'])) : '');
 
