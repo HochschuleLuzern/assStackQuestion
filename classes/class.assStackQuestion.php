@@ -1999,7 +1999,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             }
             if (array_key_exists($name, $this->inputs)) {
                 if ($sets_question_object) {
-                    $this->setInputStates($this->inputs[$name]->validate_student_response($response, $this->options, $teacher_answer, $this->security, false), $name);
+                    $this->setInputStates($this->inputs[$name]->validate_student_response($this->user_response, $this->options, $teacher_answer, $this->security, false), $name);
                     return $this->getInputStates($name);
                 } else {
                     return $this->inputs[$name]->validate_student_response($response, $this->options, $teacher_answer, $this->security, false);
@@ -2221,7 +2221,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             }
 
             //EVALUATE PRT
-            $prt_input = $this->getPrtInput($prt_name, $response, $accept_valid);
+            $prt_input = $this->getPrtInput($prt_name, $response, true);
 
             $this->setPrtResults($prt->evaluate_response($this->session, $this->options, $prt_input, $this->seed), $prt_name);
 
