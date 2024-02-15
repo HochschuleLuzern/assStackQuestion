@@ -1999,7 +1999,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             }
             if (array_key_exists($name, $this->inputs)) {
                 if ($sets_question_object) {
-                    $this->setInputStates($this->inputs[$name]->validate_student_response($this->user_response, $this->options, $teacher_answer, $this->security, false), $name);
+                    $this->setInputStates($this->inputs[$name]->validate_student_response($response, $this->options, $teacher_answer, $this->security, false), $name);
                     return $this->getInputStates($name);
                 } else {
                     return $this->inputs[$name]->validate_student_response($response, $this->options, $teacher_answer, $this->security, false);
