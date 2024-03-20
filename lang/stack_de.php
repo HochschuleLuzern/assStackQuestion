@@ -268,6 +268,11 @@ $string['false'] = 'Falsch';
 $string['notanswered'] = 'Nicht beantwortet.';
 $string['true'] = 'Wahr';
 $string['ddl_empty'] = 'Es wurden keine Auswahlmöglichkeiten für dieses DropDown-Feld angegeben. Bitte geben sie welche ein (a,b,c,d)';
+$string['ddl_runtime'] = 'Die Eingabe hat den folgenden Laufzeitfehler generiert, der Sie am Antworten hindert. Bitte wenden Sie sich an Ihren Lehrer.';
+$string['ddl_nocorrectanswersupplied'] = 'Der Lehrer hat nicht mindestens eine richtige Antwort angegeben. ';
+$string['ddl_duplicates'] = 'Beim Generieren der Eingabeoptionen wurden doppelte Werte gefunden. ';
+$string['ddl_badanswer'] = 'Das Modellantwortfeld für diese Eingabe ist fehlerhaft: <code>{$a}</code>. ';
+$string['ddl_unknown'] = 'STACK hat <code>{$a}</code> erhalten, dies wird jedoch vom Lehrer nicht als Option aufgeführt. ';
 
 // Strings used by the question test script.
 $string['addanothertestcase'] = 'Weiteren Testfall hinzufügen...';
