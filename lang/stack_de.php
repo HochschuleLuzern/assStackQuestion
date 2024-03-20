@@ -1047,6 +1047,13 @@ $string['stackInstall_testsuite_intro'] = 'Diese Seite erlaubt einen Korrektheit
 $string['stackInstall_testsuite_pass'] = 'Alle Tests bestanden!';
 $string['stackInstall_testsuite_title'] = 'Eine Testumgebung für STACK Antwortüberprüfungen';
 $string['stackInstall_testsuite_title_desc'] = 'Das <a href="{$a->link}">Antwortüberprüfungsskript</a> überprüft, dass die Antwortüberprüfungen korrekt funktionieren. Diese sind auch als Praxisbeispiele für eigene Anpassungen sehr hilfreich.';
+$string['stackInstall_testsuite_failingtests'] = 'Tests, die fehlgeschlagen sind';
+$string['stackInstall_testsuite_failingupgrades'] = 'Fragen, bei denen das Upgrade fehlgeschlagen ist.';
+$string['stackInstall_testsuite_notests'] = 'Fragen ohne Tests: Bitte fügen Sie einige hinzu!';
+$string['stackInstall_testsuite_nogeneralfeedback'] = 'Fragen ohne allgemeines Feedback: Studierende schätzen ausgearbeitete Lösungen sehr!';
+$string['stackInstall_testsuite_nodeployedseeds'] = 'Fragen mit zufälligen Varianten, aber ohne bereitgestellte Seeds';
+$string['stackInstall_testsuite_errors'] = 'Diese Frage erzeugte zur Laufzeit die folgenden Fehler.';
+
 $string['stackOptions_AnsTest_values_AlgEquiv'] = 'AlgEquiv';
 $string['stackOptions_AnsTest_values_CasEqual'] = 'CasEqual';
 $string['stackOptions_AnsTest_values_CompSquare'] = 'CompletedSquare';
