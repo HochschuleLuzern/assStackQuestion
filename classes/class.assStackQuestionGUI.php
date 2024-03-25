@@ -164,7 +164,9 @@ class assStackQuestionGUI extends assQuestionGUI
                     } elseif (is_a($input, 'stack_dropdown_input')
                         or is_a($input, 'stack_radio_input')) {
                         $response = $input->maxima_to_response_array($user_solution[$input_name]);
-                        $user_solution[$input_name] = $response[$input_name];
+                        if(array_key_exists($input_name, $response )){
+                            $user_solution[$input_name] = $response[$input_name];
+                        }
                     }
                 }
             }
