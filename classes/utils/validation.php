@@ -51,8 +51,10 @@ function checkUserResponse($question_id, $input_name, $user_response)
 		//test mode
 	} else {
 		//preview mode
-		$seed = $_SESSION['q_seed_for_preview_' . $_GET['question_id'] . ''];
-		$question->questionInitialisation($seed, true);
+        if(array_key_exists('q_seed_for_preview_' . $_GET['question_id'] . '',$_SESSION)) {
+            $seed = $_SESSION['q_seed_for_preview_' . $_GET['question_id'] . ''];
+            $question->questionInitialisation($seed, true);
+        }
 	}
 
 	//Secure input

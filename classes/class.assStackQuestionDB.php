@@ -1484,6 +1484,7 @@ class assStackQuestionDB
 		);
 
 		$row = $db->fetchAssoc($result);
+        if($row != NULL && array_key_exists("solution_id",$row)){
 		$solution_id = $row["solution_id"];
 
 		//Prepare data to update
@@ -1498,6 +1499,7 @@ class assStackQuestionDB
 		if ($solution_id != null) {
 			$db->update('tst_solutions', $field_data, array('solution_id' => array('integer', (int)$solution_id)));
 		}
+        }
 	}
 
 	/**
