@@ -328,7 +328,9 @@ class assStackQuestionRenderer
 
 			$field_name = 'xqcas_' . $question->getId() . '_' . $name;
 			//Input Placeholders
+            if (isset($student_solutions['inputs']) && is_array($student_solutions['inputs']) && array_key_exists($name,$student_solutions['inputs'])) {
 			$question_text = str_replace("[[input:{$name}]]", $question->inputs[$name]->render($input_state, $field_name, true, $student_solutions['inputs'][$name]['correct_value']), $question_text);
+            }
             $question_text = str_replace("[[validation:{$name}]]", $input_object->render_validation($input_state, $name), $question_text);
         }
 
