@@ -675,7 +675,7 @@ class assStackQuestionAuthoringGUI
 				} else {
 					$right = $branches_info->falsenextnode;
 				}
-				$graph->add_node($node_name, $left, $right, $branches_info->truescoremode . round($branches_info->truescore, 2), $branches_info->falsescoremode . round($branches_info->falsescore, 2), '#fgroup_id_' . $prt_name . 'node_' . $node_name);
+				$graph->add_node($node_name, $left, $right, $branches_info->truescoremode . round(floatval($branches_info->truescore), 2), $branches_info->falsescoremode . round(floatval($branches_info->falsescore), 2), '#fgroup_id_' . $prt_name . 'node_' . $node_name);
 			}
 		}
 
