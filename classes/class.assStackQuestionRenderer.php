@@ -290,7 +290,10 @@ class assStackQuestionRenderer
                     $response = $question->inputs[$input_name]->maxima_to_response_array(
                         $input_info['value']
                     );
-                    $user_solution[$input_name] = $response[$input_name];
+                    if(array_key_exists($input_name, $response) )
+                        $user_solution[$input_name] = $response[$input_name];
+                    else
+                        $user_solution[$input_name] = $input_info['value'];
                 }else{
                     $user_solution[$input_name] = $input_info['value'];
                 }
