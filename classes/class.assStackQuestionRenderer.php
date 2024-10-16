@@ -738,8 +738,8 @@ class assStackQuestionRenderer
 					}
 				}
 			}
-
-            if($question !== null){
+        }
+        if($question !== null){
                 $score = $prt_state->_score;
                 if($score== 1){
                     $feedback .= $question->prt_correct_instantiated . '<br>';
@@ -753,18 +753,16 @@ class assStackQuestionRenderer
                     $feedback .= $question->prt_partially_correct_instantiated . '<br>';
 
                 }
-            }
+        }
 
+		//Substitute Variables in Feedback text
+		$feedback .= self::substituteVariablesInFeedback($prt_state, $feedback_array, $format, 'preview');
 
-			//Substitute Variables in Feedback text
-			$feedback .= self::substituteVariablesInFeedback($prt_state, $feedback_array, $format, 'preview');
+		//Ensure LaTeX is properly render
+		$feedback = stack_maths::process_display_castext($feedback, null);
 
-			//Ensure LaTeX is properly render
-			$feedback = stack_maths::process_display_castext($feedback, null);
-
-			//Replace Temporal Placeholders
-			$feedback = assStackQuestionUtils::_getFeedbackStyledText($feedback, $format);
-		}
+		//Replace Temporal Placeholders
+		$feedback = assStackQuestionUtils::_getFeedbackStyledText($feedback, $format);
 
 		return self::replaceFeedbackPlaceHolders($feedback);
 	}
