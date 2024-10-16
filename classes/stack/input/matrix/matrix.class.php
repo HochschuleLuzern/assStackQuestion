@@ -97,7 +97,9 @@ class stack_matrix_input extends stack_input {
         // At the start of an attempt we will have a completely blank matrix.
         // This must be spotted and a blank attempt returned.
         if (!array_key_exists($this->name . '_sub_' . '0' . '_' . '0' , $response)) {
-            return $this->maxima_to_array($response[$this->name]);
+            if (array_key_exists($this->name, $response)) {
+                return $this->maxima_to_array($response[$this->name]);
+            }
         }
 
         $allblank = true;
