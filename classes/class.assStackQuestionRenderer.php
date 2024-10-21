@@ -700,7 +700,7 @@ class assStackQuestionRenderer
         $feedback = '';
         $feedback_bits = $prt_state->get_feedback();
         $feedback_array = array();
-
+        $format = '';
         $prt_info = $question->prts[$prt_name];
 
         // Add the student's responses, but only those needed by this prt.
