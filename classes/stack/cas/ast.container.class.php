@@ -105,10 +105,13 @@ class stack_ast_container extends stack_ast_container_silent implements cas_late
         }
 
         $fltfmt = '"~a"';
+
+        /*
         if ($this->ast !== null) {
             $fltfmt = $this->get_decimal_digits();
             $fltfmt = $fltfmt['fltfmt'];
         }
+        */
 
         $tans = $this->validationcontext['tans'];
         if ($tans === null || $tans === '') {

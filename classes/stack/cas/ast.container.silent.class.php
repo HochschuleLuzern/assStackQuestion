@@ -876,41 +876,77 @@ class stack_ast_container_silent implements cas_evaluatable {
 
         $string = $this->ast_to_string($root);
         $string = str_split($string);
-
+        $currentnumleadingzeros = 0;
+        $currentnumindefinitezeros = 0;
+        $currentnumtrailingzeros = 0;
+        $currentnummeaningfulldigits = 0;
+        $currentnumdecimalplaces = 0;
+        $lastcharwaspartofnumber = false;
         foreach ($string as $i => $c) {
+            if(!ctype_digit($c) && $c != '.' ){
+                if($lastcharwaspartofnumber){
+
+                    // end of a number
+                    // update counts
+                    $leadingzeros = max($currentnumleadingzeros, $leadingzeros);
+                    $indefinitezeros = max($currentnumindefinitezeros, $indefinitezeros);
+                    $trailingzeros = max($currentnumtrailingzeros, $trailingzeros);
+                    $meaningfulldigits = max($currentnummeaningfulldigits, $meaningfulldigits);
+
+                    // reset counters
+                    $currentnumleadingzeros = 0;
+                    $currentnumindefinitezeros = 0;
+                    $currentnumtrailingzeros = 0;
+                    $currentnummeaningfulldigits = 0;
+                    $currentnumdecimalplaces = 0;
+                    $infrontofdecimaldeparator = true;
+                }
+                $lastcharwaspartofnumber = false;
+            }
+            else{
+                $lastcharwaspartofnumber = true;
+            }
+
             if (!$infrontofdecimaldeparator && ctype_digit($c)) {
-                $decimalplaces++;
+                $currentnumdecimalplaces++;
+                $decimalplaces = max($currentnumdecimalplaces,  $decimalplaces);
             }
             if (strtolower($c) == 'e') {
                 $scientificnotation = true;
             }
             if ($c == '0') {
-                if ($meaningfulldigits == 0) {
-                    $leadingzeros++;
+                if ($currentnummeaningfulldigits == 0) {
+                    $currentnumleadingzeros++;
                 } else if ($infrontofdecimaldeparator) {
-                    $indefinitezeros++;
-                } else if ($meaningfulldigits > 0) {
-                    $meaningfulldigits += 1 + $indefinitezeros + $trailingzeros;
-                    $indefinitezeros = 0;
-                    $trailingzeros = 0;
+                    $currentnumindefinitezeros++;
+                } else if ($currentnummeaningfulldigits > 0) {
+                    $currentnummeaningfulldigits += 1 + $currentnumindefinitezeros + $currentnumtrailingzeros;
+                    $currentnumindefinitezeros = 0;
+                    $currentnumtrailingzeros = 0;
                 } else {
-                    $trailingzeros++;
+                    $currentnumtrailingzeros++;
                 }
-            } else if (($c == '-' || $c == '+') && $meaningfulldigits == 0) {
+            } else if (($c == '-' || $c == '+') && $currentnummeaningfulldigits == 0) {
                 continue;
             } else if ($c == '.' && $infrontofdecimaldeparator) {
                 $infrontofdecimaldeparator = false;
                 // This case takes care of 100. (where we have a period at the end).
-                $meaningfulldigits += $indefinitezeros;
-                $indefinitezeros = 0;
-                $leadingzeros = 0;
+                $currentnummeaningfulldigits += $currentnumindefinitezeros;
+                $currentnumindefinitezeros = 0;
+                $currentnumleadingzeros = 0;
             } else if (ctype_digit($c)) {
-                $meaningfulldigits += $indefinitezeros + 1;
-                $indefinitezeros = 0;
+                $currentnummeaningfulldigits += $currentnumindefinitezeros + 1;
+                $currentnumindefinitezeros = 0;
             } else {
-                break;
+                // break;
             }
         }
+
+        $leadingzeros = max($currentnumleadingzeros, $leadingzeros);
+        $indefinitezeros = max($currentnumindefinitezeros, $indefinitezeros);
+        $trailingzeros = max($currentnumtrailingzeros, $trailingzeros);
+        $meaningfulldigits = max($currentnummeaningfulldigits, $meaningfulldigits);
+
         $ret['decimalplaces'] = $decimalplaces;
 
         if ($meaningfulldigits == 0) {
