@@ -1054,7 +1054,7 @@ class assStackQuestionGUI extends assQuestionGUI
 		//Get new points value and save it to the DB
 		if (isset($_POST['new_scoring']) and (float)$_POST['new_scoring'] > 0.0) {
 			$this->object->setPoints((float)ilUtil::stripSlashes($_POST['new_scoring']));
-			$this->object->saveQuestionDataToDb($this->object->getId());
+			$this->object->saveQuestionDataToDb($this->object->getId() ?? -1);
 		} else {
             $tpl->setContent
             ($this->plugin->txt('sco_invalid_value'));
