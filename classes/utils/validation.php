@@ -59,7 +59,13 @@ function checkUserResponse($question_id, $input_name, $user_response)
     //Instantiate Question if not.
     if (!$question->isInstantiated()) {
         try{
-            $question->questionInitialisation(1, true);
+            if(array_key_exists('q_seed_for_preview_' . $_GET['question_id'] . '',$_SESSION)) {
+                $seed = $_SESSION['q_seed_for_preview_' . $_GET['question_id'] . ''];
+                $question->questionInitialisation($seed, true);
+            }
+            else{
+                $question->questionInitialisation(1, true);
+            }
         } catch (stack_exception|StackException $e) {
             global $tpl;
             $tpl->setOnScreenMessage('failure', $e->getMessage(), true);
