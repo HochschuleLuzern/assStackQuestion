@@ -2415,9 +2415,10 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
         $prts = [];
         $inputs = [];
         foreach ($this->prts as $name => $prt) {
-            if ($this->hasNecessaryPrtInputs($prt, $response, $accept_valid)) {
+            // TEMP PATCH HSLU: Get input even if it has only VALID status
+            if ($this->hasNecessaryPrtInputs($prt, $response, true)) {
                 $prts[$name] = $prt;
-                $inputs += $this->getPrtInput($name, $response, $accept_valid);
+                $inputs += $this->getPrtInput($name, $response, true);
             }
         }
 
