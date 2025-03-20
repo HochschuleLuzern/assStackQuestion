@@ -89,6 +89,9 @@ function checkUserResponse($question_id, $input_name, $user_response)
                 }
             }
         }
+        if ($question->getCached('statement-qv') !== null) {
+            $question->inputs[$input_name]->add_contextsession( new stack_secure_loader($question->getCached('statement-qv'), 'qv'));
+        }
         $status = $question->getInputState($input_name, $user_response);
     } catch (stack_exception $e) {
         return $e->getMessage();

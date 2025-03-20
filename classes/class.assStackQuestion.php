@@ -2008,6 +2008,10 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
                 $teacheranswer = $this->tas[$name]->get_value();
             }
         }
+        //Validate student response
+        if ($this->getCached('statement-qv') !== null) {
+            $this->inputs[$name]->add_contextsession( new stack_secure_loader($this->getCached('statement-qv'), 'qv'));
+        }
         if (array_key_exists($name, $this->inputs)) {
             $qv = [];
             $qv['preamble-qv'] = $this->getCached('preamble-qv');
