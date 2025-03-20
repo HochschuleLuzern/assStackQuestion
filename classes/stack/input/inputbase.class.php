@@ -120,7 +120,7 @@ abstract class stack_input {
      * @var bool.
      */
     protected $runtime = true;
-
+    protected $is_tcontents = false;
     /**
      * Constructor
      *
@@ -696,8 +696,11 @@ abstract class stack_input {
             $checktype = true;
             $tresponse = $this->maxima_to_response_array($teacheranswer);
             $tcontents = $this->response_to_contents($tresponse);
+            $filteroptions = array();
+            // its teacher rather than student contents, so apply teacher security
+            $filteroptions['998_security'] = array('security' => 't');
             list($tvalid, $terrors, $tnotes, $tmodifiedcontents, $tcaslines)
-                = $this->validate_contents($tcontents, $secrules, $localoptions);
+                = $this->validate_contents($tcontents, $secrules, $localoptions, $filteroptions);
         } else {
             $tcaslines = array();
         }
@@ -970,7 +973,7 @@ abstract class stack_input {
      *                                         appear in the student's input.
      * @return array of the validity, errors strings, modified contents and caslines.
      */
-    protected function validate_contents($contents, $basesecurity, $localoptions) {
+    protected function validate_contents($contents, $basesecurity, $localoptions, $filteroptions = array()) {
 
         $errors = $this->extra_validation($contents);
         $valid = !$errors;
@@ -986,7 +989,7 @@ abstract class stack_input {
                 $val = '';
             }
             $answer = stack_ast_container::make_from_student_source($val, '', $secrules, $filterstoapply,
-                array(), 'Root', $this->options->get_option('decimals'));
+                $filteroptions, 'Root', $this->options->get_option('decimals'));
 
             $caslines[] = $answer;
             $valid = $valid && $answer->get_valid();
