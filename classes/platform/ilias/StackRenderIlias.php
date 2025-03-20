@@ -78,12 +78,6 @@ class StackRenderIlias extends StackRender
 
         $feedback = stack_maths::process_display_castext($feedback);
 
-        if (!$result->is_evaluated()) {
-            if ($question->isAnyInputBlank($response)) {
-                return $renderer->render($factory->messageBox()->failure($language->txt('qpl_qst_xqcas_error_inputs_missing')));
-            }
-        }
-
         $state = StackEvaluation::stateForFraction($result->get_score());
 
         $prt_feedback_instantiated = match ($state) {
