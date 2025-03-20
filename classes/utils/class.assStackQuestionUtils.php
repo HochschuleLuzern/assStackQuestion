@@ -611,6 +611,21 @@ class assStackQuestionUtils
 			if ($format == "only_input_names") {
 				$adapted_user_response[str_replace("xqcas_" . $question_id . "_", "", $input_name)] = ilUtil::stripScriptHTML($input_value);
 			}
+            else {
+                if ($input_value instanceof stack_matrix_input){
+                    // All the matrix elements.
+                    $i = 0;
+                    $j = 0;
+                    while ($user_response->offsetExists("xqcas_" . $question_id . "_".$input_name . '_sub_' . $i . '_' . $j)) {
+                        while ($user_response->offsetExists("xqcas_" . $question_id . "_".$input_name . '_sub_' . $i . '_' . $j)) {
+                            $adapted_user_response[$input_name . '_sub_' . $i . '_' . $j] = $user_response->offsetGet("xqcas_" . $question_id . "_".$input_name . '_sub_' . $i . '_' . $j);;
+                            $j = $j + 1;
+                        }
+                        $i = $i + 1;
+                        $j = 0;
+                    }
+                }
+            }
 		}
 		return $adapted_user_response;
 	}
