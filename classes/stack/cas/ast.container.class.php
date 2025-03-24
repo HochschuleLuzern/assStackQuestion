@@ -97,72 +97,74 @@ class stack_ast_container extends stack_ast_container_silent implements cas_late
         }
 
         $fltfmt = '"~a"';
+/*
         if ($this->ast !== null) {
-            $fltfmt = $this->get_decimal_digits();
-            $fltfmt = $fltfmt['fltfmt'];
-        }
+           $fltfmt = $this->get_decimal_digits();
+           $fltfmt = $fltfmt['fltfmt'];
+       }
+*/
 
         $tans = $this->validationcontext['tans'];
-        if ($tans === null || $tans === '') {
-            // If we are here someone has forgotten something.
-            $tans = 'und';
-        }
-        $validationmethod = $this->validationcontext['validationmethod'];
+       if ($tans === null || $tans === '') {
+           // If we are here someone has forgotten something.
+           $tans = 'und';
+       }
+       $validationmethod = $this->validationcontext['validationmethod'];
 
-        $checkvars = $this->validationcontext['checkvars'];
+       $checkvars = $this->validationcontext['checkvars'];
 
-        $vcmd = 'stack_validate(['.$starredanswer.'], '.$lowestterms.','.$tans.','.$fltfmt.','.$checkvars.')';
-        if ($validationmethod == 'typeless') {
-            $vcmd = 'stack_validate_typeless(['.$starredanswer.'], '.$lowestterms.','.$tans.','.
-                $fltfmt.','.$checkvars.', false)';
-        }
-        if ($validationmethod == 'equiv') {
-            $vcmd = 'stack_validate_typeless(['.$starredanswer.'], '.$lowestterms.','.$tans.','.
-                $fltfmt.','.$checkvars.', true)';
-        }
-        if ($validationmethod == 'units') {
-            // Note, we don't pass in forbidfloats as this option is ignored by the units validation.
-            $vcmd = '(make_multsgn("blank"),stack_validate_units(['.$starredanswer.'], ' .
-                    $lowestterms.', '.$tans.', "inline", '.$fltfmt.'))';
-        }
-        if ($validationmethod == 'unitsnegpow') {
-            // Note, we don't pass in forbidfloats as this option is ignored by the units validation.
-            $vcmd = '(make_multsgn("blank"),stack_validate_units(['.$starredanswer.'], ' .
-                    $lowestterms.', '.$tans.', "negpow", '.$fltfmt.'))';
-        }
-        return $this->validationcontext['vname'] . ':' . $vcmd;
-    }
+       $vcmd = 'stack_validate(['.$starredanswer.'], '.$lowestterms.','.$tans.','.$fltfmt.','.$checkvars.')';
+       if ($validationmethod == 'typeless') {
+           $vcmd = 'stack_validate_typeless(['.$starredanswer.'], '.$lowestterms.','.$tans.','.
+               $fltfmt.','.$checkvars.', false)';
+       }
+       if ($validationmethod == 'equiv') {
+           $vcmd = 'stack_validate_typeless(['.$starredanswer.'], '.$lowestterms.','.$tans.','.
+               $fltfmt.','.$checkvars.', true)';
+       }
+       if ($validationmethod == 'units') {
+           // Note, we don't pass in forbidfloats as this option is ignored by the units validation.
+           $vcmd = '(make_multsgn("blank"),stack_validate_units(['.$starredanswer.'], ' .
+                   $lowestterms.', '.$tans.', "inline", '.$fltfmt.'))';
+       }
+       if ($validationmethod == 'unitsnegpow') {
+           // Note, we don't pass in forbidfloats as this option is ignored by the units validation.
+           $vcmd = '(make_multsgn("blank"),stack_validate_units(['.$starredanswer.'], ' .
+                   $lowestterms.', '.$tans.', "negpow", '.$fltfmt.'))';
+       }
+       return $this->validationcontext['vname'] . ':' . $vcmd;
+   }
 
-    public function set_cas_evaluated_value(MP_Node $ast) {
-        $this->evaluated = $ast;
-    }
+   public function set_cas_evaluated_value(MP_Node $ast) {
+       $this->evaluated = $ast;
+   }
 
-    public function set_cas_display_value(string $displayvalue) {
-        // Maxima displays floats as sting with these tags.
-        // The last of the old mess left?
-        $displayvalue = str_replace('"!! ', '', $displayvalue);
-        $displayvalue = str_replace(' !!"', '', $displayvalue);
+   public function set_cas_display_value(string $displayvalue) {
+       // Maxima displays floats as sting with these tags.
+       // The last of the old mess left?
+       $displayvalue = str_replace('"!! ', '', $displayvalue);
+       $displayvalue = str_replace(' !!"', '', $displayvalue);
 
-        $this->displayvalue = $displayvalue;
-    }
+       $this->displayvalue = $displayvalue;
+   }
 
-    public function set_cas_latex_value(string $latex) {
-        $this->latex = stack_maxima_latex_tidy($latex);
-    }
+   public function set_cas_latex_value(string $latex) {
+       $this->latex = stack_maxima_latex_tidy($latex);
+   }
 
-    public function get_evaluated(): MP_Node {
-        return $this->evaluated;
-    }
+   public function get_evaluated(): MP_Node {
+       return $this->evaluated;
+   }
 
-    public function get_latex(): string {
-        return $this->latex;
-    }
+   public function get_latex(): string {
+       return $this->latex;
+   }
 
-    public function is_correctly_evaluated(): bool {
-        /*
-         * In cases where a statement occurs many times, only the last values will be stored.
-         * Some of the previous values will therefore be null, creating an exception if we ask for the value.
-         */
+   public function is_correctly_evaluated(): bool {
+       /*
+        * In cases where a statement occurs many times, only the last values will be stored.
+        * Some of the previous values will therefore be null, creating an exception if we ask for the value.
+        */
         if ($this->evaluated === null) {
             return false;
         }
