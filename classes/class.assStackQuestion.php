@@ -1444,7 +1444,7 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             } else if (!$this->hasRandomVariants()) {
                 // Randomisation not used.
                 $this->seed = 1;
-            } else if (!empty($this->deployed_seeds)) {
+            } else if (!empty($this->deployed_seeds) && !is_null($variant)) {
                 // Question has a fixed number of variants.
                 $this->seed = $this->deployed_seeds[$variant] + 0;
                 // Don't know why this is coming out as a string. + 0 converts to int.
