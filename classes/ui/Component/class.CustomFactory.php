@@ -28,7 +28,9 @@ use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuesti
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\ExpandableSection;
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\Legacy;
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\TabSection;
+use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\TaxonomySelect;
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\TextareaRTE;
+use ilObjTaxonomy;
 
 /**
  * Class CustomFactory
@@ -69,5 +71,10 @@ class CustomFactory
     public function buttonSection(array $buttons, string $label, ?string $by_line = null): ButtonSection
     {
         return new ButtonSection($buttons, $label, $by_line);
+    }
+
+    public function taxonomySelect(ilObjTaxonomy $taxonomy): TaxonomySelect
+    {
+        return new TaxonomySelect($taxonomy);
     }
 }
