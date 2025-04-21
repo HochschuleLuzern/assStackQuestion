@@ -30,6 +30,7 @@ use assStackQuestionUtils;
 use classes\platform\StackConfig;
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\CustomFactory;
 use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\ExpandableSection;
+use Customizing\global\plugins\Modules\TestQuestionPool\Questions\assStackQuestion\classes\ui\Component\Input\Field\TaxonomySelect;
 use ilAssQuestionLifecycle;
 use ilassStackQuestionPlugin;
 use ilCtrlException;
@@ -38,7 +39,9 @@ use ILIAS\UI\Component\Input\Container\Form\Standard as StandardForm;
 use ILIAS\UI\Factory;
 use ILIAS\UI\Renderer;
 use ilLanguage;
+use ilObject;
 use ilObjTaxonomy;
+use ilTaxNodeAssignment;
 use ilTestQuestionPoolInvalidArgumentException;
 use stack_abstract_graph_svg_renderer;
 use stack_ans_test_controller;
@@ -151,6 +154,7 @@ class StackQuestionAuthoringUI
     /**
      * @throws stack_exception
      * @throws ilTestQuestionPoolInvalidArgumentException
+     * @throws \ilTaxonomyException
      */
     private function save(array $result): ?string
     {
@@ -307,6 +311,12 @@ class StackQuestionAuthoringUI
         foreach ($prts_placeholders as $placeholder) {
             if (!isset($this->question->prts[$placeholder])) {
                 $this->question->loadStandardPrt($placeholder);
+            }
+        }
+
+        if (!empty($result["taxonomies"])) {
+            foreach ($result["taxonomies"] as $taxonomy_id => $nodes) {
+                TaxonomySelect::saveTaxonomySelect($this->question->getObjId(), $this->question->getId(), $taxonomy_id, $nodes);
             }
         }
 
@@ -935,6 +945,9 @@ class StackQuestionAuthoringUI
         return "";
     }
 
+    /**
+     * @throws \ilTaxonomyException
+     */
     private function buildTaxonomySection(): array
     {
         $taxonomies = [];
@@ -943,6 +956,19 @@ class StackQuestionAuthoringUI
             $taxonomy = new ilObjTaxonomy($taxonomyId);
 
             $taxonomies[$taxonomyId] = $this->customFactory->taxonomySelect($taxonomy);
+
+            $tax_node_ass = new ilTaxNodeAssignment(ilObject::_lookupType($this->question->getObjId()), $this->question->getObjId(), 'quest', $taxonomyId);
+            $current_ass = $tax_node_ass->getAssignmentsOfItem($this->question->getId());
+
+            if (!empty($current_ass)) {
+                $value = [];
+
+                foreach ($current_ass as $ca) {
+                    $value[] = (int) $ca["node_id"];
+                }
+
+                $taxonomies[$taxonomyId] = $taxonomies[$taxonomyId]->withValue($value);
+            }
         }
 
         return $taxonomies;
