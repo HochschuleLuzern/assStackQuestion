@@ -169,11 +169,13 @@ class stack_cas_castext2_iframe extends stack_cas_castext2_block {
 
         // Ensure plots get their full URL at this point.
         $code = str_replace('!ploturl!', ILIAS_HTTP_PATH . "/" . ILIAS_WEB_DIR . "/" . CLIENT_ID . "/xqcas/stack/plots/", $code);
+        $b64 = base64_encode($code);
 
         // Escape some JavaScript strings.
         $args = [
             json_encode($frameid),
-            json_encode($code),
+            'atob(' . json_encode($b64) . ')',
+            //json_encode($code),
             json_encode($divid),
             json_encode($title),
             $scrolling ? 'true' : 'false',
