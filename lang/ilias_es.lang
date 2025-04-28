@@ -1,0 +1,707 @@
+<!-- language file start -->
+ui_admin_configuration_title#:#Configuración de preguntas STACK
+ui_admin_configuration_saved#:#La configuración se guardó con éxito.
+ui_admin_configuration_description#:#Esta página le permite configurar el plugin de preguntas STACK.
+ui_admin_configuration_overview_title#:#Visión general del plugin STACK
+ui_admin_configuration_maxima_title#:#Conexión a Maxima
+ui_admin_configuration_defaults_title#:#Valores predeterminados
+ui_admin_configuration_quality_title#:#Aseguramiento de la calidad
+ui_admin_configuration_maxima_connection_title#:#Conexión a Maxima
+ui_admin_configuration_maxima_connection_description#:#Esta sección le permite configurar los valores principales para la conexión a Maxima.
+ui_admin_configuration_maxima_connection_unix_title#:#Unix
+ui_admin_configuration_defaults_maxima_connection_unix_description#:#Maxima está instalado localmente en el servidor donde se ejecuta la plataforma ILIAS.
+ui_admin_configuration_defaults_maxima_connection_server_title#:#Servidor
+ui_admin_configuration_defaults_maxima_connection_server_description#:#Maxima está instalado en un servidor diferente al que ejecuta la plataforma ILIAS.
+ui_admin_configuration_defaults_display_title#:#Opciones de visualización para matemáticas
+ui_admin_configuration_defaults_display_description#:#Estos son los valores predeterminados para la visualización de matemáticas.
+ui_admin_configuration_defaults_validation_title#:#Modo de validación
+ui_admin_configuration_defaults_user_validation_title#:#Validación de usuario
+ui_admin_configuration_defaults_user_validation_description#:#Esta opción activa la validación manual para todas las preguntas.
+ui_admin_configuration_defaults_instant_validation_title#:#Validación instantánea
+ui_admin_configuration_defaults_instant_validation_description#:#Esta opción activa la validación instantánea para todas las preguntas.
+ui_admin_configuration_correct_solution_in_validation#:#Muestra la mejor solución en la validación
+ui_admin_configuration_correct_solution_in_validation_info#:#Esta opción activa la visualización de la mejor solución en la validación de cada entrada en lugar de al final de la pregunta.
+ui_admin_configuration_connection_maxima_connection_common_title#:#Configuraciones generales de conexión Maxima
+ui_admin_configuration_connection_maxima_connection_common_description#:#Estas son las configuraciones generales de conexión Maxima.
+ui_admin_configuration_connection_maxima_connection_local_title#:#Maxima local (Linux)
+ui_admin_configuration_connection_maxima_connection_local_description#:#Estas son las configuraciones para una instalación local de Maxima en un sistema Linux.
+ui_admin_configuration_connection_maxima_connection_server_title#:#Servidor Maxima (Maxima Pool o Goemaxima)
+ui_admin_configuration_connection_maxima_connection_server_description#:#Esta opción activa el servidor Maxima para todas las preguntas en esta plataforma.
+ui_admin_configuration_connection_maxima_version_title#:#Versión de Maxima
+ui_admin_configuration_connection_maxima_version_description#:#Esta opción establece la versión de Maxima a utilizar.
+ui_admin_configuration_defaults_cas_connection_timeout_title#:#Tiempo de espera de conexión CAS
+ui_admin_configuration_defaults_cas_connection_timeout_description#:#Esta opción establece el tiempo de espera utilizado al intentar conectar con Maxima.
+ui_admin_configuration_connection_cas_result_caching_title#:#Caché de resultados CAS
+ui_admin_configuration_connection_cas_result_caching_description#:#Esta opción determina si las llamadas al CAS se almacenan en caché. Esta configuración debe estar activada, a menos que esté desarrollando y modificando el código de Maxima. El estado actual del caché se muestra en la página de verificación de estado. Si cambia sus configuraciones, por ejemplo, el comando gnuplot, debe borrar el caché antes de ver los efectos de estos cambios.
+ui_admin_configuration_connection_cas_result_caching_db#:#Caché en la base de datos
+ui_admin_configuration_connection_cas_result_caching_none#:#No almacenar en caché
+ui_admin_configuration_connection_preparse_all_title#:#Preanalizar todo
+ui_admin_configuration_connection_preparse_all_description#:#Recomendamos que todo el código en variables de preguntas, etc., incluso de profesores de confianza, sea preanalizado para detectar patrones potencialmente dañinos. Esto es especialmente importante si se aceptan preguntas importadas de fuentes conocidas. Sin embargo, es posible que este preanálisis expire y sea necesario desactivar esta verificación (temporalmente) para salir de un posible callejón sin salida. Este código aún se está probando y desarrollando, y esta configuración se eliminará en futuras versiones para asegurar que este preanálisis siempre se aplique.
+ui_admin_configuration_connection_preparse_all_yes#:#Siempre preanalizar
+ui_admin_configuration_connection_preparse_all_no#:#No preanalizar (no recomendado)
+ui_admin_configuration_connection_maxima_command_title#:#Comando de Maxima
+ui_admin_configuration_connection_maxima_command_description#:#Si esto está vacío, STACK hará una suposición educada sobre dónde encontrar Maxima. Si eso falla, debe establecerse en la ruta completa del ejecutable maxima o maxima-optimizado. Usar solo para desarrollo y depuración. No usar en un sistema de producción: Use optimizado o mejor, la opción de Maxima Pool.
+ui_admin_configuration_connection_optimized_maxima_command_title#:#Comando de Maxima Optimizado
+ui_admin_configuration_connection_optimized_maxima_command_description#:#Esto debe establecerse en la ruta completa del ejecutable maxima-optimizado. Considere usar el comando de tiempo de espera en sistemas basados en Linux. Por ejemplo, timeout --kill-after=10s 10s maxima
+ui_admin_configuration_connection_maxima_pool_url_title#:#URL del Maxima Pool
+ui_admin_configuration_connection_maxima_pool_url_description#:#Para tipo de plataforma: Servidor, esto debe establecerse en la URL del servlet de Maxima Pool
+ui_admin_configuration_connection_maxima_pool_server_username_password_title#:#Usuario:Contraseña del Servidor de Maxima Pool
+ui_admin_configuration_connection_maxima_pool_server_username_password_description#:#Si está utilizando tipo de plataforma: Servidor, y si ha configurado su servidor de Maxima Pool con autenticación HTTP, entonces puede ingresar aquí el nombre de usuario y la contraseña. Esto es algo más seguro que ponerlos en la URL. El formato es Usuario:Contraseña.
+ui_admin_configuration_connection_plot_command_title#:#Comando de Plot
+ui_admin_configuration_connection_plot_command_description#:#Esto debe establecerse en la ruta completa del ejecutable gnuplot.
+ui_admin_configuration_connection_maxima_libraries_title#:#Bibliotecas de Maxima
+ui_admin_configuration_connection_maxima_libraries_description#:#Esta es una lista separada por comas de nombres de bibliotecas de Maxima que se cargan automáticamente en Maxima. Solo se pueden usar nombres de bibliotecas compatibles: "stats, distrib, descriptive, simplex". Si cambia las bibliotecas enumeradas, debe recrear la imagen optimizada de Maxima.
+ui_admin_configuration_connection_maxima_libraries_validation#:#La lista de bibliotecas de Maxima no es válida.
+ui_admin_configuration_connection_cas_debugging_title#:#Depuración de CAS
+ui_admin_configuration_connection_cas_debugging_description#:#Si se deben guardar la información de depuración para la conexión CAS.
+ui_admin_configuration_connection_cache_parsed_expressions_longer_than_title#:#Cachear expresiones analizadas más largas que
+ui_admin_configuration_connection_cache_parsed_expressions_longer_than_description#:#El analizador de expresiones se vuelve bastante lento con expresiones largas (por ejemplo, variables de preguntas complicadas). Por lo tanto, almacenamos en caché el resultado del análisis de expresiones que son más largas que este límite. Idealmente, esta configuración debe establecerse en un valor donde la búsqueda en caché tome aproximadamente el mismo tiempo que el análisis. 50 caracteres es una suposición educada para esto. Si se establece en 0, la caché está desactivada.
+ui_admin_configuration_connection_cache_parsed_expressions_longer_than_validation#:#El valor debe ser un número.
+ui_admin_configuration_connection_maxima_uses_proxy_title#:#Maxima utiliza proxy
+ui_admin_configuration_connection_maxima_uses_proxy_description#:#Por describir
+ui_admin_configuration_defaults_options_title#:#Configuraciones predeterminadas para opciones
+ui_admin_configuration_defaults_options_description#:#Estos son los valores predeterminados para las opciones de la pregunta. Estos valores se utilizan cuando se crea una nueva pregunta.
+ui_admin_configuration_defaults_question_simplify_title#:#Simplificación a nivel de pregunta
+ui_admin_configuration_defaults_question_simplify_description#:#Por defecto, establece la variable "simp" dentro de Maxima como verdadera a nivel de pregunta. Por ejemplo, variables de pregunta, texto de pregunta, etc. El valor establecido en cada árbol de respuesta potencial sobrescribe esto para todas las expresiones definidas posteriormente dentro del árbol.
+ui_admin_configuration_defaults_question_simplify_description#:#Por defecto, establece la variable "simp" dentro de Maxima como verdadera a nivel de pregunta. Por ejemplo, variables de pregunta, texto de pregunta, etc. El valor establecido en cada árbol de respuesta potencial sobrescribe esto para todas las expresiones definidas posteriormente dentro del árbol.
+ui_admin_configuration_defaults_assume_positive_title#:#Asumir positivo
+ui_admin_configuration_defaults_assume_positive_description#:#Esta opción establece el valor predeterminado de la variable 'assume positive' de Maxima en nuevas preguntas.
+ui_admin_configuration_defaults_assume_real_title#:#Asumir real
+ui_admin_configuration_defaults_assume_real_description#:#Esta opción establece el valor predeterminado de la variable 'assume real' de Maxima en nuevas preguntas.
+ui_admin_configuration_defaults_feedback_fully_correct_default#:#¡Felicidades! Todas sus respuestas son correctas.
+ui_admin_configuration_defaults_feedback_fully_correct_title#:#Retroalimentación predeterminada para PRT completamente correcto
+ui_admin_configuration_defaults_feedback_fully_correct_description#:#Esta es la retroalimentación que se muestra al estudiante cuando todas sus respuestas son correctas.
+ui_admin_configuration_defaults_feedback_partially_correct_default#:#Algunas de sus respuestas son correctas.
+ui_admin_configuration_defaults_feedback_partially_correct_title#:#Retroalimentación predeterminada para PRT parcialmente correcto
+ui_admin_configuration_defaults_feedback_partially_correct_description#:#Esta es la retroalimentación que se muestra al estudiante cuando algunas de sus respuestas son correctas.
+ui_admin_configuration_defaults_feedback_fully_incorrect_default#:#Ninguna de sus respuestas es correcta.
+ui_admin_configuration_defaults_feedback_fully_incorrect_title#:#Retroalimentación predeterminada para PRT completamente incorrecto
+ui_admin_configuration_defaults_feedback_fully_incorrect_description#:#Esta es la retroalimentación que se muestra al estudiante cuando ninguna de sus respuestas es correcta.
+ui_admin_configuration_defaults_surd_for_sqrt_title#:#Expresión de raíz para raíz cuadrada
+ui_admin_configuration_defaults_surd_for_sqrt_description#:#Controla cómo se muestran las expresiones de raíz.
+ui_admin_configuration_defaults_complex_numbers_title#:#Significado y visualización de sqrt(-1)
+ui_admin_configuration_defaults_complex_numbers_description#:#Controla el significado y la visualización del símbolo i y sqrt(-1)
+ui_admin_configuration_defaults_complex_numbers_i#:#i
+ui_admin_configuration_defaults_complex_numbers_j#:#j
+ui_admin_configuration_defaults_complex_numbers_symi#:#symi
+ui_admin_configuration_defaults_complex_numbers_symj#:#symj
+ui_admin_configuration_defaults_multiplication_sign_title#:#Signo de multiplicación
+ui_admin_configuration_defaults_multiplication_sign_description#:#Controla cómo se muestran los signos de multiplicación.
+ui_admin_configuration_defaults_multiplication_sign_dot#:#Punto
+ui_admin_configuration_defaults_multiplication_sign_cross#:#Cruz
+ui_admin_configuration_defaults_multiplication_sign_only_numbers#:#Solo números
+ui_admin_configuration_defaults_multiplication_sign_none#:#Ninguno
+ui_admin_configuration_defaults_inverse_trigonometric_title#:#Funciones trigonométricas inversas
+ui_admin_configuration_defaults_inverse_trigonometric_description#:#Controla cómo se muestran las funciones trigonométricas inversas en las salidas de CAS.
+ui_admin_configuration_defaults_inverse_trigonometric_cos#:#cos-1
+ui_admin_configuration_defaults_inverse_trigonometric_acos#:#acos(x)
+ui_admin_configuration_defaults_inverse_trigonometric_arccos#:#arccos(x)
+ui_admin_configuration_defaults_inverse_trigonometric_arccos_arcosh#:#arccos(x)/arcosh(x)
+ui_admin_configuration_defaults_logic_symbols_title#:#Símbolos lógicos
+ui_admin_configuration_defaults_logic_symbols_description#:#Controla cómo se muestran los símbolos lógicos.
+ui_admin_configuration_defaults_logic_symbols_lang#:#Idioma
+ui_admin_configuration_defaults_logic_symbols_symbolic#:#Simbólico
+ui_admin_configuration_defaults_matrix_parentheses_title#:#Paréntesis de matriz
+ui_admin_configuration_defaults_matrix_parentheses_description#:#Controla la forma predeterminada de los paréntesis de matriz cuando se muestran en salidas de CAS.
+ui_admin_configuration_defaults_input_type_algebraic#:#Entrada algebraica
+ui_admin_configuration_defaults_input_type_textarea#:#Área de texto
+ui_admin_configuration_defaults_input_type_matrix#:#Matriz
+ui_admin_configuration_defaults_input_type_title#:#Tipo de entrada
+ui_admin_configuration_defaults_input_type_description#:#Esto determina el tipo de elemento de entrada, por ejemplo, campo de formulario, verdadero/falso, área de texto.
+ui_admin_configuration_defaults_input_box_size_title#:#Tamaño del campo de entrada
+ui_admin_configuration_defaults_input_box_size_description#:#Ancho del campo de formulario HTML.
+ui_admin_configuration_defaults_input_strict_syntax_title#:#Sintaxis estricta
+ui_admin_configuration_defaults_input_strict_syntax_description#:#¿Debe la entrada seguir una sintaxis estricta de Maxima? Si no, esto aumenta el rango de patrones que muestran * faltantes en la entrada, incluyendo cualquier aplicación de función y notación científica.
+ui_admin_configuration_defaults_insert_star_options_0#:#No insertar estrellas
+ui_admin_configuration_defaults_insert_star_options_1#:#Insertar estrellas solo para multiplicación implícita.
+ui_admin_configuration_defaults_insert_star_options_2#:#Insertar estrellas asumiendo nombres de variables de un solo carácter.
+ui_admin_configuration_defaults_insert_star_options_3#:#Insertar estrellas solo para espacios
+ui_admin_configuration_defaults_insert_star_options_4#:#Insertar estrellas para multiplicación implícita y para espacios
+ui_admin_configuration_defaults_insert_star_options_5#:#Insertar estrellas asumiendo variables de un solo carácter, implícitas y para espacios
+ui_admin_configuration_defaults_input_insert_stars_title#:#Insertar estrellas
+ui_admin_configuration_defaults_input_insert_stars_description#:#Esta opción ofrece varias formas de insertar estrellas donde se implica multiplicación. Por favor, lea la documentación más detallada.
+ui_admin_configuration_defaults_input_forbidden_words_title#:#Palabras prohibidas
+ui_admin_configuration_defaults_input_forbidden_words_description#:#Esta es una lista de cadenas de texto separadas por comas que están prohibidas en una respuesta de un estudiante.
+ui_admin_configuration_defaults_input_forbidden_words_validation#:#La lista de palabras prohibidas no es válida.
+ui_admin_configuration_defaults_input_forbid_float_title#:#Prohibir flotante
+ui_admin_configuration_defaults_input_forbid_float_description#:#Si se establece en sí, cualquier respuesta del estudiante que contenga un número de coma flotante será rechazada como inválida.
+ui_admin_configuration_defaults_input_require_lowest_terms_title#:#Exigir términos más bajos
+ui_admin_configuration_defaults_input_require_lowest_terms_description#:#Si esta opción está configurada en sí, todos los coeficientes u otros números racionales en una expresión deben escribirse en los términos más bajos. De lo contrario, la respuesta será rechazada como inválida.
+ui_admin_configuration_defaults_input_check_answer_type_title#:#Verificar el tipo de respuesta
+ui_admin_configuration_defaults_input_check_answer_type_description#:#Si está en sí, las respuestas que son de otro tipo (por ejemplo, expresión, ecuación, matriz, lista, conjunto) serán rechazadas como inválidas.
+ui_admin_configuration_defaults_input_must_verify_title#:#Los estudiantes deben verificar
+ui_admin_configuration_defaults_input_must_verify_description#:#Indica si la entrada del estudiante se les devuelve antes de la evaluación.
+ui_admin_configuration_defaults_input_show_validation_options_0#:#No
+ui_admin_configuration_defaults_input_show_validation_options_1#:#Sí, con lista de variables
+ui_admin_configuration_defaults_input_show_validation_options_2#:#Sí, sin lista de variables
+ui_admin_configuration_defaults_input_show_validation_options_3#:#Sí, compacto
+ui_admin_configuration_defaults_input_show_validation_title#:#Mostrar la validación
+ui_admin_configuration_defaults_input_show_validation_description#:#Configurar esta opción muestra todos los comentarios de validación para esta entrada, incluyendo el eco de sus expresiones en notación bidimensional tradicional.
+ui_admin_configuration_defaults_inputs_title#:#Configuraciones predeterminadas para entradas
+ui_admin_configuration_defaults_inputs_description#:#Estos son los valores predeterminados para las entradas de la pregunta. Estos valores se utilizan cuando se crea una nueva pregunta o se añade una nueva entrada a una pregunta.
+ui_admin_configuration_defaults_section_title_healthcheck_healthcheckmaximalocal#:#Prueba de función Maxima local
+ui_admin_configuration_defaults_section_title_healthcheck_healthuncached#:#Prueba de función sin caché
+ui_admin_configuration_defaults_section_title_healthcheck_healthcheckconnect#:#Prueba de función de conexión
+ui_admin_configuration_defaults_section_title_healthcheck_healthcheckconnectunicode#:#Prueba de función de conexión Unicode
+ui_admin_configuration_defaults_section_title_healthcheck_healthcheckplots#:#Prueba de función de gráficos
+ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstackmaximaversion#:#Prueba de función de versión de Maxima de Stack
+ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstacklibrariesworking#:#Prueba de función de bibliotecas de Stack funcionando
+ui_admin_configuration_quality_healthcheck_button_label#:#Realizar prueba de función
+ui_admin_configuration_quality_check_prt_placeholders_button_label#:#Verificar marcadores de posición PRT
+ui_admin_configuration_quality_check_prt_placeholders_no_prts#:#La pregunta STACK con el ID %s no tiene PRT, por lo tanto, su calificación siempre será 0.
+ui_admin_configuration_quality_check_prt_placeholders_missing_placeholders#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con marcadores de posición faltantes: (%s)
+ui_admin_configuration_quality_check_prt_placeholders_bad_name#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con nombre incorrecto: (%s)
+ui_admin_configuration_quality_check_prt_placeholders_fixed#:#Se han añadido los marcadores de posición faltantes.
+ui_admin_configuration_quality_check_prt_names_fixed#:#Se han corregido los nombres incorrectos.
+ui_admin_configuration_quality_check_prt_placeholders_all_ok#:#Todos los PRTs tienen marcadores de posición.
+ui_admin_configuration_quality_healthcheck_mbstring_true#:#La extensión PHP mbstring está instalada y activada
+ui_admin_configuration_quality_healthcheck_mbstring_false#:#STACK requiere la extensión mbstring de PHP, y no está instalada en el servidor donde se ejecuta ILIAS. Las preguntas de STACK pueden no funcionar correctamente hasta que esto esté instalado.
+ui_author_main_title#:#Autor de preguntas STACK
+ui_author_import_from_moodle_xml_button_label#:#Importar preguntas desde un archivo MoodleXML
+ui_author_create_blank_question_button_label#:#Crear pregunta STACK desde cero
+ui_author_import_moodle_xml_title#:#Importar preguntas desde un archivo MoodleXML
+ui_author_import_moodle_xml_file#:#Archivo XML de Moodle
+ui_author_import_moodle_xml_import_button#:#Importar
+ui_author_import_moodle_xml_cancel_import_button#:#Regresar
+ui_author_randomisation_and_security_title#:#Aleatorización y seguridad
+ui_author_randomisation_no_randomisation_message#:#Esta pregunta no utiliza aleatorización.
+ui_author_randomisation_no_deployed_variants_message_but_has_randomisation#:#Esta pregunta utiliza aleatorización, pero no tiene variantes implementadas.
+ui_author_randomisation_no_variants_generate_new_variants_action_text#:#Generar 10 nuevas variantes (si es posible)
+ui_author_randomisation_add_standard_test_title#:#Prueba automática (Verifica si la respuesta modelo se califica como correcta)
+ui_author_randomisation_add_standard_test_description#:#Agregar una prueba automática
+ui_author_randomisation_add_standard_test_button_text#:#Agregar prueba automática
+ui_author_randomisation_delete_all_variants_action_text#:#Eliminar todas las variantes
+ui_author_randomisation_all_seeds_deleted#:#Todas las semillas han sido eliminadas
+ui_author_randomisation_confirm_delete_all_seeds#:#¿Realmente desea eliminar todas las semillas?
+ui_author_randomisation_standard_unit_test_case_added#:#Caso de prueba estándar añadido
+ui_author_randomisation_active_variant_panel_title#:#Variante activa para autores en vista previa y pruebas unitarias
+ui_author_randomisation_deployed_variants_panel_title#:#Variantes de la pregunta para estudiantes en pruebas
+ui_author_randomisation_is_current_active_variant_text#:#Es la variante activa actual para vista previa y pruebas unitarias
+ui_author_randomisation_set_as_active_variant_action_text#:#Establecer como variante activa para vista previa y pruebas unitarias
+ui_author_randomisation_delete_deployed_variant_action_text#:#Eliminar variante implementada
+ui_author_randomisation_show_question_text_action_text#:#Mostrar texto de la pregunta
+ui_author_randomisation_show_general_feedback_action_text#:#Mostrar retroalimentación general
+ui_author_randomisation_question_variables_text#:#Variables de la pregunta
+ui_author_randomisation_feedback_variables_text#:#Variables de retroalimentación
+ui_author_randomisation_generate_new_variants_action_text#:#Generar 10 nuevas variantes
+ui_author_randomisation_change_to_random_seed_action_text#:#Cambiar a semilla aleatoria
+ui_author_randomisation_run_all_tests_for_active_variant_action_text#:#Ejecutar todos los casos de prueba para la variante activa
+ui_author_randomisation_run_all_tests_for_all_variants_action_text#:#Ejecutar todos los casos de prueba para todas las variantes
+ui_author_randomisation_run_all_tests_for_this_question_action_text#:#Ejecutar todos los casos de prueba para esta pregunta
+ui_author_randomisation_add_unit_test_action_text#:#Agregar caso de prueba personalizado
+ui_author_randomisation_run_unit_test_action_text#:#Ejecutar caso de prueba
+ui_author_randomisation_run_unit_test_for_all_variants_action_text#:#Ejecutar caso de prueba para todas las variantes
+ui_author_randomisation_edit_unit_test_action_text#:#Editar caso de prueba
+ui_author_randomisation_regenerate_unit_test_action_text#:#Regenerar caso de prueba
+ui_author_randomisation_delete_unit_test_action_text#:#Eliminar caso de prueba
+ui_author_randomisation_unit_test_status_panel_title#:#Casos de prueba de la pregunta
+ui_author_randomisation_unit_test_not_run#:#No probado
+ui_author_randomisation_unit_test_passed#:#Aprobado
+ui_author_randomisation_unit_test_failed#:#No aprobado
+ui_author_randomisation_unit_test_description#:#Descripción
+ui_author_randomisation_unit_test_last_run#:#Última ejecución
+ui_author_randomisation_unit_test_status#:#Estado
+ui_author_randomisation_unit_test_addform_description#:#Descripción del caso de prueba
+ui_author_randomisation_unit_test_addform_section_general#:#General
+ui_author_randomisation_unit_test_addform_section_entries#:#Respuesta del usuario
+ui_author_randomisation_unit_test_addform_rating#:#Puntuación PRT
+ui_author_randomisation_unit_test_addform_penalization#:#Penalización PRT
+ui_author_randomisation_unit_test_addform_response_note#:#Nota de respuesta
+ui_author_randomisation_unit_test_addform_section_expected_result#:#Resultados esperados
+ui_author_randomisation_unit_test_case_passed#:#Caso de prueba aprobado
+ui_author_randomisation_unit_test_case_failed_empty#:#Caso de prueba fallido debido a casos de prueba vacíos no permitidos
+ui_author_randomisation_unit_test_case_failed#:#Caso de prueba fallido debido a: %s
+ui_author_randomisation_unit_test_case_passed_for_seed#:#Caso de prueba %s aprobado para Seed %s
+ui_author_randomisation_unit_test_case_failed_empty_for_seed#:#Caso de prueba %s fallido debido a casos de prueba vacíos no permitidos para Seed %s
+ui_author_randomisation_unit_test_case_failed_for_seed#:#Caso de prueba %s fallido debido a: %s para Seed %s
+ui_author_randomisation_unit_test_case_deleted#:#Caso de prueba eliminado
+ui_author_randomisation_confirm_regenerate_unit_test#:#¿Está seguro de que desea regenerar este caso de prueba? Si confirma esto, se generará un nuevo caso de prueba y se perderán los resultados actuales. Tenga en cuenta también que el nuevo caso se generará como caso estándar si el caso actual no es estándar. Este proceso no es reversible.
+ui_author_randomisation_unit_test_case_regenerated#:#Caso de prueba regenerado
+ui_author_randomisation_cannot_delete_active_variant#:#No puede eliminar la variante activa
+ui_author_randomisation_sucessfully_on_seeds_generation#:#Las semillas se generaron con éxito
+ui_author_randomisation_failed_on_seeds_generation#:#Error al generar las semillas
+ui_author_randomisation_no_test_case_selected#:#No se seleccionó ningún caso de prueba
+ui_author_randomisation_ckeck_prt_placeholders_button_label#:#Verificar marcadores de posición PRT para banco de preguntas/prueba
+assStackQuestion#:#Pregunta STACK
+question_imported_successfully#:#La(s) pregunta(s) se importó(aron) con éxito.
+error_importing_question#:#Ocurrió un error durante la importación.
+import_xml#:#Importar desde un archivo XML de Moodle
+import_xml_file#:#Archivo XML de Moodle
+qpl_qst_xqcas_import_questions_into_qpl#:#Importar pregunta al banco de preguntas
+qpl_qst_xqcas_import_xml_file#:#Importar archivo XML
+qpl_qst_xqcas_input_type_algebraic#:#Algebraico
+qpl_qst_xqcas_input_type_textarea#:#Área de texto
+qpl_qst_xqcas_input_type_boolean#:#Booleano
+qpl_qst_xqcas_input_type_matrix#:#Matriz
+qpl_qst_xqcas_input_type_not_supported#:#Tipo no soportado
+validation_feedback_message#:#Su última respuesta fue interpretada de la siguiente manera:
+create_questions_into_qpl#:#Importar pregunta desde MoodleXML
+edit_cas_question#:#Editar pregunta
+evaluate_question#:#Evaluar respuesta
+evaluation_mode#:#Modo de evaluación:
+preview_points_message_p1#:#Su evaluación de la pregunta es:
+preview_points_message_p2#:#Punto(s) de un máximo de
+preview_points_message_p3#:#Punto(s)
+preview_feedback_message#:#Retroalimentación:
+message_general_feedback#:#Retroalimentación general para esta pregunta:
+message_no_how_to_solve_in_this_question#:#No hay retroalimentación general para esta pregunta.
+message_user_solution_part#:#Su respuesta fue:
+message_feedback_solution_part#:#Retroalimentación CAS a su respuesta:
+message_points#:#Puntos recibidos por esta respuesta:
+message_feedback_status_part#:#Estado de esta respuesta:
+message_total_points#:#Puntos recibidos por esta pregunta:
+not_answered_part_feedback#:#Parte no respondida
+randomisation_info#:#Atención: La pregunta contiene variables aleatorias cuyo valor está fijado para esta sesión. Para cambiarlas, inicie una nueva sesión.
+#<!-- plugin configuration variables -->
+show_connection_settings#:#Conexión a Maxima
+show_display_settings#:#Opciones de visualización matemática
+show_default_options_settings#:#Valores predeterminados para opciones de preguntas
+show_default_inputs_settings#:#Valores predeterminados para configuraciones de entrada
+save#:#Guardar
+cancel#:#Cancelar
+default_settings#:#Usar configuraciones predeterminadas
+platform_type#:#Tipo de plataforma
+platform_type_info#:#Sistema operativo en el que se ejecutan ILIAS y Maxima. Seleccione "Servidor" para conectar un grupo de Maxima, vea<br />https://github.com/maths/stack_util_maximapool
+windows#:#Windows
+unix#:#Linux
+maxima_version#:#Versión de Maxima
+maxima_version_info#:#La versión del programa utilizada por Maxima.
+cas_connection_timeout#:#Tiempo de espera de conexión
+cas_connection_timeout_info#:#Tiempo después del cual se cancelará un intento de conexión con Maxima.
+cas_result_caching#:#Caché de resultados CAS
+cache_in_the_database#:#Caché en la base de datos
+do_not_cache#:#No almacenar en caché
+cas_result_caching_info#:#El almacenamiento de las solicitudes al sistema CAS debe estar activado excepto para el desarrollo. Consulte la página de estado para verificar. Si cambia configuraciones, por ejemplo, el comando gnuplot, borre el caché.
+maxima_command#:#Comando de Maxima
+maxima_command_info#:#Comando de línea para iniciar Maxima. Para el tipo de plataforma "Servidor", ingrese la URL del grupo de Maxima, por ejemplo,<br />http://localhost:8080/MaximaPool/MaximaPool
+plot_command#:#Comando de gráfico
+plot_command_info#:#Comando de línea para gnuplot.
+cas_debugging#:#Depuración CAS
+cas_debugging_info#:#Guardar información de depuración para la conexión CAS
+connection_settings#:#Configuración de la conexión CAS
+instant_validation#:#Validación automática
+instant_validation_info#:#Las entradas se validan continuamente al escribir. Esto aumenta la comodidad, pero también la carga del servidor. Por lo tanto, esta configuración solo se puede establecer al usar un grupo Maxima (ver "Conexión a Maxima").
+maths_filter#:#Visualización de fórmulas
+maths_filter_info#:#Método para la visualización de fórmulas. MathJax es el estándar. Verifique la configuración en la página de estado.
+replace_dollars#:#Reemplazar $ y $$
+replace_dollars_info#:#En el texto de la pregunta, los delimitadores $...$ y $$...$$ además de \[...\] y \(...\) también serán reemplazados.
+display_settings#:#Opciones de visualización matemática
+options_question_simplify#:#Simplificación a nivel de tarea
+options_question_simplify_info#:#Establece dentro de MAXIMA la variable global "simp" para toda la tarea.
+options_assume_positive#:#Asumir positivo
+options_assume_positive_info#:#Establece la variable Maxima "assume_pos".
+options_assume_real#:#Asumir real
+options_assume_real_info#:#Esta opción establece el valor de la variable Maxima assume_real.
+options_prt_correct#:#Retroalimentación para respuestas correctas
+options_prt_partially_correct#:#Retroalimentación para respuestas parcialmente correctas
+options_prt_incorrect#:#Retroalimentación para respuestas incorrectas
+options_multiplication_sign#:#Signo de multiplicación
+options_multiplication_sign_info#:#Representación del signo de multiplicación
+options_mult_sign_dot#:#Punto
+options_mult_sign_cross#:#Cruz
+options_mult_sign_none#:#Sin signo
+options_sqrt_sign#:#Signo de raíz
+options_sqrt_sign_info#:#Representación de raíces
+options_complex_numbers#:#Visualización de sqrt(-1)
+options_complex_numbers_info#:#Significado y representación del símbolo i y sqrt(-1)
+options_complex_numbers_i#:#i
+options_complex_numbers_j#:#j
+options_complex_numbers_symi#:#symi
+options_complex_numbers_symj#:#symj
+options_inverse_trigonometric#:#Funciones trigonométricas inversas
+options_inverse_trigonometric_info#:#Visualización de funciones trigonométricas en la salida.
+options_inverse_trigonometric_cos#:#cos^(-1)(x)
+options_inverse_trigonometric_acos#:#acos(x)
+options_inverse_trigonometric_arccos#:#arccos(x)
+default_options_settings#:#Configuración predeterminada para opciones de preguntas
+input_type#:#Tipo de entrada
+input_type_info#:#Tipo de elemento de entrada, por ejemplo, campo de formulario, verdadero/falso, campo de texto multilínea.
+input_type_algebraic#:#Entrada algebraica
+input_type_boolean#:#Verdadero/Falso
+input_type_matrix#:#Matriz
+input_type_varmatrix#:#Matriz variable
+input_type_singlechar#:#Carácter único
+input_type_textarea#:#Multilínea
+input_box_size#:#Ancho de entrada
+input_box_size_info#:#Ancho del campo de entrada HTML en caracteres.
+input_strict_syntax#:#Sintaxis estricta
+input_strict_syntax_info#:#Requerir sintaxis estricta de Maxima en la entrada. De lo contrario, hay más variantes para interpretar asteriscos (*) faltantes, incluyendo aplicación de funciones y notación científica.
+input_insert_stars#:#Insertar asteriscos
+input_insert_stars_info#:#Si está activado, se insertarán automáticamente asteriscos (*) en patrones identificados por la sintaxis estricta. De lo contrario, se mostrará un mensaje de error.
+input_forbidden_words#:#Palabras prohibidas
+input_forbidden_words_info#:#Lista separada por comas de cadenas que no están permitidas en una respuesta del participante.
+input_forbid_float#:#Prohibir coma flotante
+input_forbid_float_info#:#Cualquier número de coma flotante en una respuesta del participante será rechazado como incorrecto.
+input_require_lowest_terms#:#Requerir términos más bajos
+input_require_lowest_terms_info#:#Cada coeficiente o número racional en una expresión debe escribirse como el término más pequeño posible. De lo contrario, la respuesta será rechazada como no válida.
+input_check_answer_type#:#Verificar tipo de respuesta
+input_check_answer_type_info#:#Las respuestas con un tipo diferente al esperado (por ejemplo, expresión, ecuación, matriz, lista, conjunto) serán rechazadas como inválidas.
+input_must_verify#:#Verificación requerida
+input_must_verify_info#:#La respuesta ingresada se devuelve para confirmación antes de ser evaluada.
+input_show_validation#:#Mostrar validación
+input_show_validation_info#:#Mostrar cualquier retroalimentación de la validación de entrada, incluida la representación de la expresión en notación bidimensional tradicional.
+default_input_settings#:#Configuraciones predeterminadas para entradas
+config_connection_changed_message#:#Los ajustes de conexión con Maxima se han cambiado con éxito.
+config_display_changed_message#:#Los ajustes de representación matemática se han cambiado con éxito.
+config_options_changed_message#:#Los ajustes de opciones de preguntas se han cambiado con éxito.
+config_inputs_changed_message#:#Los ajustes para entradas se han cambiado con éxito.
+config_default_connection_message#:#Los ajustes de conexión con Maxima se han restablecido a los valores predeterminados.
+config_default_display_message#:#Los ajustes de representación matemática se han restablecido a los valores predeterminados.
+config_default_options_message#:#Los ajustes de opciones de preguntas se han restablecido a los valores predeterminados.
+config_default_inputs_message#:#Los ajustes para entradas se han restablecido a los valores predeterminados.
+default_prt_correct_message#:#Respuesta correcta, bien hecho.
+default_prt_partially_correct_message#:#Su respuesta es parcialmente incorrecta.
+default_prt_incorrect_message#:#Respuesta incorrecta.
+error_importing_question_malformed#:#Una o más preguntas no se pudieron importar correctamente. ¡Por favor, revise el archivo XML!
+validation_feedback_error_message#:#Respuesta no válida:
+error_importing_question_to_test#:#Las preguntas STACK no se pueden importar directamente a una prueba. Intente importar la pregunta a un banco de preguntas y luego copiarla a una prueba.
+message_best_solution#:#La mejor solución es:
+show_other_settings#:#Configuraciones generales
+show_healthcheck#:#Prueba de funcionamiento
+healthcheck_expanded#:#Mostrar datos de análisis de errores
+healthcheck_reduced#:#Realizar prueba de funcionamiento
+hc_passed#:#Aprobado
+hc_failed#:#¡Error ocurrido!
+hc_connection_expanded_title#:#Verificación de la conexión Maxima (versión ampliada)
+hc_connection_expanded_explanation#:#En esta página, verá los resultados de varias pruebas de funcionamiento. Un fondo verde indica que la prueba se completó con éxito. Un fondo rojo indica un error y posiblemente se muestra una sugerencia para la solución.
+hc_bat_location_title#:#¿Se encontró una versión instalada de Maxima por el plugin?
+hc_bat_location#:#Maxima está instalado y fue reconocido por el plugin. El archivo maxima.bat se encontró en la siguiente ubicación:
+hc_bat_location_error#:#Maxima no está instalado o no fue encontrado por el plugin. El archivo maxima.bat debería estar presente en uno de los siguientes directorios:
+hc_maximalocal_title#:#¿Se generó correctamente maximalocal.mac?
+hc_maximalocal#:#El archivo maximalocal.mac se escribió con éxito en la siguiente ubicación:
+hc_maximalocal_content#:#El contenido de maximalocal.mac es:
+hc_maximalocal_error#:#No se pudo escribir el archivo maximalocal.mac y no se encontró en la siguiente ubicación:
+hc_connection_status_title#:#Conexión a Maxima
+hc_connection_status_display#:#En esta sección, siempre se envía una llamada real a Maxima, independientemente de la configuración del caché. Esto prueba si la conexión Maxima realmente funciona.
+hc_sample_command#:#El siguiente texto CAS se enviará para evaluación:
+hc_sample_command_title#:#Intento de conexión a Maxima
+hc_connection_reduced_title#:#Verificación de la conexión Maxima
+hc_connection_reduced_explanation#:#En esta página, verá los resultados de varias pruebas de funcionalidad. Si el fondo es verde, la prueba se completó con éxito. Si el fondo es rojo, ocurrió un error y posiblemente se mostrará una sugerencia para solucionarlo.
+info_old_version_question#:#ADVERTENCIA: Esta pregunta fue importada antes de la versión 1.6 del plugin y no funciona correctamente. Por favor, elimine e importe la pregunta nuevamente.
+info_functionality_not_developed#:#Esta función aún no está implementada.
+error_import_question_in_test#:#ERROR: Las preguntas no se pueden importar directamente a una prueba. Por favor, importe las preguntas a un banco de preguntas para usarlas en una prueba.
+hc_connection_status_display_error#:#El plugin no puede establecer conexión con Maxima. Por favor, verifique si Maxima está instalado en el lugar correcto.
+error_evaluation_determining_status#:#No se puede determinar el estado de la pregunta.
+error_evaluation_determining_status_message#:#No se puede determinar el estado de la pregunta.
+cache_successfully_deleted#:#La caché se ha vaciado con éxito.
+clear_cache#:#Vaciar caché
+error_import_no_title#:#Se produjo un error al importar una pregunta. En el archivo XML no había un título para esta pregunta, por lo que no se pudo crear.
+error_import_no_question_text#:#No se pudo crear la pregunta con el siguiente título, ya que no contiene texto de pregunta:
+error_import_no_points#:#No se pudo crear la pregunta con el siguiente título, ya que no se le asignaron puntos:
+error_import_no_inputs#:#No se pudo crear la pregunta con el siguiente título, ya que no se definió ninguna entrada en ella:
+error_import_no_prt#:#No se pudo crear la pregunta con el siguiente título, ya que no se definió ningún árboles de respuestas potenciales en ella:
+import_number_of_questions_created#:#Las preguntas fueron creadas.
+import_number_of_questions_created_1#:#La pregunta fue creada.
+randomisation_info_2#:#Atención: Esta pregunta contiene variables aleatorias. Para cambiar las variables aleatorias, por favor recargue la página actual.
+message_question_text#:#Texto de la pregunta
+message_teacher_solution_part#:#La solución es:
+message_error_part#:#Se encontraron los siguientes errores:
+message_user_response_container#:#Las siguientes respuestas fueron evaluadas:
+dsm_deployed_seeds#:#Valores aleatorios preparados
+dsm_question_doesnt_use_randomisation#:#Esta pregunta no está aleatorizada, por lo que no puede generar valores aleatorios.
+dsm_deployed_seeds_header#:#Valor aleatorio
+dsm_question_notes_header#:#Nota de la pregunta para el valor aleatorio
+dsm_view_form_header#:#Acciones
+dsm_new_deployed_seed_form#:#Generar nuevo valor aleatorio
+dsm_new_deployed_seed_form_input#:#Valor aleatorio
+dsm_new_deployed_seed_form_button#:#Generar nuevo valor
+dsm_delete_deployed_seed_form_button#:#Eliminar
+dsm_deployed_seed_deleted#:#El valor seleccionado fue eliminado con éxito.
+dsm_subtitle#:#Los siguientes valores aleatorios fueron preparados para esta pregunta.
+dsm_no_deployed_seeds#:#No hay valores aleatorios preparados para esta pregunta.
+dsm_not_allowed_seed#:#El valor que ingresó no es adecuado como valor aleatorio.
+import_from_moodle#:#Importar preguntas desde MoodleXML
+scoring_management#:#Evaluación
+edit_question#:#Editar pregunta
+sco_scoring#:#Evaluación
+sco_subtitle#:#En esta página, puede ver la estructura de evaluación de la pregunta para cambiar la puntuación máxima y verificar la asignación de puntos.
+sco_scoring_form#:#Estado de la evaluación
+sco_current_scoring_form_input#:#Puntuación actual
+sco_new_scoring_form_input#:#Nueva puntuación
+sco_show_new_scoring_form_button#:#Mostrar comparación
+sco_set_new_scoring_form_button#:#Guardar puntuación
+sco_invalid_value#:#La puntuación que ha introducido no es válida para esta pregunta.
+sco_prt_name#:# Nombre del árboles de respuestas potenciales:
+sco_prt_value#:#Puntuación máxima para este árboles de respuestas potenciales:
+sco_node_name#:#Nombre del nodo:
+message_answernote_part#:#Nota de respuesta
+exp_question_note#:#Nota de la pregunta
+exp_general_feedback#:#Retroalimentación general
+exp_student_answer#:#Respuesta entregada
+sco_current_scoring_info#:#Estos son los puntos máximos actualmente alcanzables para esta pregunta.
+sco_new_scoring_info#:#Aquí puede ingresar un nuevo valor para comparar el cálculo de los puntos parciales o establecer una nueva puntuación máxima.
+bs_your_solution_was#:#Su solución:
+bs_best_solution#:#Solución sugerida:
+ut_title#:#Casos de prueba
+ut_subtitle#:#Con los casos de prueba, puede verificar que su pregunta se evalúa como se pretende.
+ut_testcase_name_header#:#Nombre del caso de prueba
+ut_testcase_name#:#Caso de prueba
+ut_input_name#:#Nombre del campo de entrada
+ut_student_response#:#Respuesta del estudiante
+ut_expected_mark#:#Evaluación esperada
+ut_received_mark#:#Evaluación recibida
+ut_expected_penalty#:#Penalización esperada
+ut_received_penalty#:#Penalización recibida
+ut_cas_errors#:#Errores de CAS
+ut_cas_feedback#:#Retroalimentación de CAS
+ut_expected_answer_note#:#Nota de respuesta esperada
+ut_received_answer_note#:#Nota de respuesta recibida
+ut_run_testcase#:#Iniciar caso de prueba
+ut_edit_testcase#:#Editar caso de prueba
+ut_delete_testcase#:#Eliminar caso de prueba
+ut_run_all_tests#:#Iniciar todos los casos de prueba de esta pregunta
+ut_expected_score_for#:#Evaluación esperada para
+ut_expected_penalty_for#:#Penalización esperada para
+ut_expected_answernote_for#:#Nota de respuesta esperada para
+ut_test_passed#:#Aprobado
+ut_test_failed#:#¡Error ocurrido!
+options_matrix_parens#:#Paréntesis de matriz
+options_matrix_parens_info#:#Determina el carácter de los paréntesis de la matriz en la salida del CAS
+options_question_variables#:#Variables de la pregunta
+prt#:#Árboles de respuestas potenciales (PRT)
+prts#:#Árboles de retroalimentación (PRTs)
+prt_value#:#Valor de la tarea
+prt_value_info#:#El valor de la tarea indica cómo se ponderan los árboles de retroalimentación en los puntos totales en relación entre sí. Si dos árboles de retroalimentación tienen el mismo valor de tarea, se les asigna la misma puntuación máxima.
+prt_simplify#:#Simplificación
+prt_simplify_info#:#Establece la variable "simp" para las variables de retroalimentación en este árboles de respuestas potenciales, así como para la evaluación del árbol. Esta configuración sobrescribe la configuración en opciones.
+prt_feedback_variables#:#Variables de retroalimentación
+prt_feedback_variables_info#:#Las variables de retroalimentación permiten manipular la entrada junto con las variables de la tarea antes de recorrer el árboles de respuestas potenciales. Las variables definidas aquí se pueden usar en cualquier parte del árboles de respuestas potenciales.
+node_positive_part#:#Nodo si VERDADERO
+node_negative_part#:#Nodo si FALSO
+prt_node_pos_mod#:#Mod si verdadero
+prt_node_pos_mod_info#:#Cómo se ajusta la puntuación. "=" establece los puntos a un valor específico. "+/-" suma o resta puntos de la suma actual.
+prt_node_pos_score#:#Puntos si verdadero
+prt_node_pos_score_info#:#Evaluación si la prueba de respuesta resulta "verdadera".
+prt_node_pos_penalty#:#Deducciones si verdadero
+prt_node_pos_penalty_info#:#Resta tantos puntos.
+prt_node_pos_next#:#Nodo si verdadero
+prt_node_pos_next_info#:#Nodo con el que se continúa (detener si está vacío).
+prt_node_pos_answernote#:#Nota de respuesta si es verdadero
+prt_node_pos_answernote_info#:#Este campo se utiliza para la presentación de informes. Determina la ruta única a través del árbol y el resultado de cada respuesta. Se genera automáticamente, pero también se puede cambiar manualmente a algo significativo.
+prt_node_pos_specific_feedback#:#Retroalimentación si es verdadero
+prt_node_pos_specific_feedback_info#:#Este texto CAS puede usar las variables de la tarea, los elementos de entrada u otras variables de retroalimentación. Se evalúa y se muestra tan pronto como un estudiante alcanza esta rama.
+prt_node_neg_mod#:#Mod si es falso
+prt_node_neg_mod_info#:#Cómo se ajusta la puntuación. "=" establece los puntos a un valor específico. "+/-" suma o resta puntos del total actual.
+prt_node_neg_score#:#Puntos si es falso
+prt_node_neg_score_info#:#Evaluación cuando la prueba de respuesta resulta "falso".
+prt_node_neg_penalty#:#Penalizaciones si es falso
+prt_node_neg_penalty_info#:#Resta tantos puntos.
+prt_node_neg_next#:#Nodo si es falso
+prt_node_neg_next_info#:#Nodo con el que continuar (detener si está vacío).
+prt_node_neg_answernote#:#Nota de respuesta si es falso
+prt_node_neg_answernote_info#:#Este campo se utiliza para la presentación de informes. Determina la ruta única a través del árbol y el resultado de cada respuesta. Se genera automáticamente, pero también se puede cambiar manualmente a algo significativo.
+prt_node_neg_specific_feedback#:#Retroalimentación si es falso
+prt_node_neg_specific_feedback_info#:#Este texto CAS puede usar las variables de la tarea, los elementos de entrada u otras variables de retroalimentación. Se evalúa y se muestra tan pronto como un estudiante alcanza esta rama.
+inputs#:#Entradas de prueba
+options#:#Opciones
+show_options#:#Mostrar opciones de preguntas
+show_input#:#Mostrar entrada
+prt_name#:#Nombre del árboles de respuestas potenciales
+prt_name_info#:#Normalmente, los árboles de respuestas potenciales se nombran como prt1, prt2, ...
+prt_settings#:#Configuraciones
+prt_graph#:#Visualización gráfica
+prt_settings_and_nodes#:#Configuraciones
+prt_nodes#:#Nodos
+enable_disable_info#:#Activar/desactivar mensajes de información
+end#:#Fin
+input_syntax_hint#:#Sugerencia de sintaxis
+input_allow_words#:#Palabras permitidas
+input_options#:#Opciones adicionales
+input_syntax_hint_info#:#La sugerencia de sintaxis aparece cuando el campo de respuesta de los estudiantes se deja vacío.
+input_allow_words_info#:#Por defecto, no se permiten funciones o nombres de variables con más de dos caracteres en la respuesta. Esta es una lista separada por comas de las excepciones permitidas.
+input_options_info#:#Algunos tipos de entrada requieren opciones adicionales. Ingréselas como una expresión CAS (código Maxima).
+auth_title#:#Editar pregunta
+auth_subtitle#:#Crear y editar preguntas STACK.
+prt_node_answer_test#:#Verificación de respuesta
+prt_node_student_answer#:#Respuesta del estudiante
+prt_node_teacher_answer#:#Respuesta del profesor
+prt_node_options#:#Opciones de prueba
+prt_node_quiet#:#Suprimir retroalimentación
+prt_node_answer_test_info#:#Una verificación de respuesta es una prueba para comparar dos expresiones y ver si cumplen ciertas propiedades matemáticas.
+prt_node_student_answer_info#:#Este es el primer argumento de la función de verificación de respuesta. En pruebas asimétricas, se considera como la respuesta del estudiante, aunque podría ser cualquier expresión CAS válida. También se pueden usar variables de la tarea o retroalimentación.
+prt_node_teacher_answer_info#:#Este es el segundo argumento de la función de verificación de respuesta. En pruebas asimétricas, se considera como la respuesta del docente, aunque podría ser cualquier expresión CAS válida. También se pueden usar variables de la tarea o retroalimentación.
+prt_node_options_info#:#Este campo permite a la verificación de respuesta usar una opción, por ejemplo, una variable o una precisión numérica específica.
+prt_node_quiet_info#:#Si SÍ, cualquier retroalimentación generada automáticamente por la verificación de respuesta se suprimirá y no se mostrará al estudiante. Sin embargo, esto no afecta los campos de retroalimentación de las ramas del árboles de respuestas potenciales.
+add_new_prt#:#Nuevo árboles de respuestas potenciales (PRT)
+add_new_node#:#Nuevo nodo
+delete_node#:#Eliminar nodo
+delete_prt#:#Eliminar árboles de respuestas potenciales
+change_prt_name#:#Cambiar nombre del árboles de respuestas potenciales
+authoring_points_info#:#Puede establecer la puntuación total de la pregunta en "Evaluación".
+authoring_input_creation_info#:#Para crear un nuevo campo de entrada, ingrese los marcadores de posición "[[input:NombreEntrada]]" y "[[validation:NombreEntrada]]" en el texto de la pregunta. Para eliminarlo, elimine los marcadores de posición en el texto de la pregunta.
+input_hint#:#Sugerencia
+options_question_variables_info#:#Este campo le permite definir y manipular variables CAS, por ejemplo, para crear variantes aleatorias.
+options_how_to_solve#:#Retroalimentación general
+options_how_to_solve_info#:#La retroalimentación general, también llamada solución modelo, se muestra a los estudiantes después de su intento de respuesta. A diferencia de la retroalimentación (específica), se muestra a todos los estudiantes por igual, independientemente de su respuesta ingresada. Aquí se pueden usar variables del texto de la tarea.
+node_creation_hint#:#Sugerencia para la creación de nodos
+node_creation_hint_text#:#Para crear un nuevo nodo, complete los campos SAns (respuesta del estudiante), TAns (respuesta del docente) y uno de los campos de puntos o deducción. Después de guardar, el nodo se puede agregar al árboles de respuestas potenciales.
+input_model_answer#:#Solución modelo
+input_model_answer_info#:#El docente debe proporcionar una solución modelo para cada campo de entrada. Esto debe ser una cadena válida de Maxima. Puede contener variables del texto de la tarea.
+options_question_note#:#Nota de la tarea
+options_question_note_info#:#La nota de la tarea debe distinguir entre las diferentes versiones aleatorias de una pregunta. Dos preguntas son iguales si y solo si las notas de la tarea son iguales. Para el análisis posterior, es útil crear notas de respuesta significativas.
+server#:#Servidor
+error_fields_missing#:#Faltan algunos campos obligatorios.
+dsm_fix_deployed_seed_form_button_text#:#Corrija este valor para el modo de vista previa.
+dsm_fix_deployed_seed_form_button#:#Ver vista previa
+prt_first_node#:#Primer nodo
+export_to_moodle#:#Exportar a MoodleXML
+export_to_moodlexml#:#Exportar a MoodleXML
+all_from_pool#:#Modo
+export_only_this#:#Exportar solo esta pregunta
+export_all_from_test#:#Exportar preguntas del test actual
+export_all_from_pool#:#Exportar preguntas del pool actual
+export_only_this_info#:#Seleccione esta opción para generar un archivo MoodleXML con esta pregunta
+export_all_from_test_info#:#Seleccione esta opción para generar un archivo MoodleXML con todas las preguntas STACK en el test actual
+export_all_from_pool_info#:#Seleccione esta opción para generar un archivo MoodleXML con todas las preguntas STACK en el pool de preguntas actual
+error_exporting_to_moodle_mode#:#Error: El modo de exportación seleccionado no existe.
+error_exporting_to_moodle_question_id#:#Error: No se encontró el ID de la pregunta. Es posible que una pregunta que desea exportar esté dañada.
+moodlexml_no_questions_selected#:#Error: No ha seleccionado ninguna pregunta.
+error_not_valid_prt_name#:#El nombre del árbol de retroalimentación no es válido.
+exception_no_raw_given_in_keyval_creation#:#Hubo un error al crear el comando Maxima.
+error_no_question_note#:#Una pregunta con variables aleatorias debe tener una nota de tarea.
+error_prt_without_first_node#:#Advertencia: Desea crear una pregunta sin estructura de árboles de respuestas potenciales. Asegúrese de que haya al menos un árboles de respuestas potenciales (PRT) con al menos un nodo como nodo inicial.
+warning_use_evaluation_button_instead#:#Por favor, use el botón de evaluación de arriba en su lugar.
+error_in_question_text#:#Hay el siguiente error en el texto de la pregunta o en las variables de la pregunta.
+error_in_specific_feedback#:#Hay el siguiente error en la retroalimentación específica.
+error_in_question_note#:#Error en la nota de tarea.
+error_in_prt_correct#:#Hay el siguiente error en la retroalimentación de la respuesta correcta.
+error_in_prt_partially_correct#:#Hay el siguiente error en la retroalimentación de la respuesta parcialmente correcta.
+error_in_prt_incorrect#:#Hay el siguiente error en la retroalimentación de la respuesta incorrecta.
+error_in_how_to_solve#:#Hay el siguiente error en la solución modelo.
+error_in_node_creation#:#El nodo no pudo ser creado válidamente. Debe contener una respuesta del estudiante, una respuesta del docente y puntos o deducción de puntos.
+deletion_error_not_enought_prts#:#No puede eliminar el único árboles de respuestas potenciales de la pregunta.
+deletion_error_not_enought_prt_nodes#:#No puede eliminar el único nodo en este árboles de respuestas potenciales.
+deletion_error_first_node#:#No puede eliminar el nodo inicial del árboles de respuestas potenciales.
+no_model_solution_for_this_input#:#No hay solución modelo para esta entrada.
+options_specific_feedback#:#Retroalimentación específica
+options_specific_feedback_info#:#Por defecto, se muestra retroalimentación para cada árboles de respuestas potenciales en este bloque. También se puede mover al texto de la tarea, aunque entonces la visualización no dependerá de la entrada.
+questions_updated_new_feedback_system#:#Número de preguntas que se han cambiado al nuevo sistema de retroalimentación.
+questions_updated_new_feedback_system2#:#Los marcadores de posición de retroalimentación se han movido al campo de retroalimentación específica, puede moverlos de nuevo al texto de la pregunta si es necesario.
+error_lack_of_following_feedback_placeholders#:#Los siguientes árboles de resultados no tienen un marcador de posición de retroalimentación (como [[feedback:prt1]]) en el texto de la pregunta o en la retroalimentación específica:
+untitled_question#:#Pregunta STACK sin título
+auth_tip1#:#Haga clic aquí para leer la Guía Rápida de Creación de Preguntas STACK en inglés
+auth_tip2#:#Haga clic aquí para leer la Guía Rápida de Creación de Preguntas STACK en alemán
+auth_tip3#:#
+interpreted_by_maxima_as#:#Interpretado por Maxima como:
+interpreted_by_maxima_as_2#:#Su respuesta fue interpretada de la siguiente manera:
+sco_info#:#Esta página muestra la calificación de las preguntas en puntos. Para cada nodo de un árboles de respuestas potenciales, los puntos de la prueba de respuesta positiva se muestran en verde y los de la prueba de respuesta negativa en rojo. Para cada árboles de respuestas potenciales, los puntos máximos alcanzables muestran su ponderación dentro de la pregunta.
+castext_info#:#En este campo puede usar texto CAS. Es código HTML en el que se puede incrustar LaTeX entre "\(" y "\)" y código Maxima entre "@" y "@". El código Maxima se ejecuta antes de que se muestre la pregunta. También es posible dentro de LaTeX.
+html_info#:#En este campo solo se permiten elementos HTML, no LaTeX ni expresiones Maxima.
+casexpression_info#:#En este campo solo puede ingresar código Maxima, no LaTeX ni HTML.
+casexpression_name#:#Expresión CAS
+inputs_star#:#Entradas de prueba *
+error_in_question_variables#:#El siguiente error ocurre en las variables de la pregunta:
+auth_inputs#:#Configuraciones de entrada
+info_allowed#:#Contenido:
+castext_name#:#Texto CAS
+html_name#:#HTML
+auth_guide_name#:#Guía de creación de STACK
+unix_optimised#:#Linux (Optimizado)
+error_model_answer_missing#:#Falta la solución modelo de la(s) siguiente(s) entrada(s):
+error_student_answer_missing#:#Falta la respuesta del estudiante ("SAns") para el siguiente PRT / nodo:
+error_teacher_answer_missing#:#Falta la respuesta del docente ("TAns") para el siguiente PRT / nodo:
+preview_no_answer#:#Debe responder la pregunta para recibir retroalimentación.
+update_to_version_3#:#Durante la actualización, todas las preguntas STACK se convirtieron a la nueva sintaxis CASText. Por favor, revise las preguntas existentes para asegurarse de que funcionen correctamente.
+update_to_version_3_2#:#Por favor, revise las preguntas importadas, ya que se convirtieron a la nueva sintaxis CASText en esta versión del plugin.
+input_type_checkbox#:#Casilla de verificación
+input_type_dropdown#:#Lista desplegable
+input_type_equiv#:#Ecuaciones
+input_type_notes#:#Notas
+input_type_radio#:#Selección de radio
+input_type_units#:#Unidades
+maxima_libraries#:#Bibliotecas Maxima
+cas_maxima_libraries_info#:#Esta lista separada por comas de bibliotecas Maxima se carga automáticamente en Maxima. Solo se pueden usar bibliotecas compatibles, consulte la documentación. Las bibliotecas no se cargan automáticamente si utiliza una imagen Maxima optimizada para el rendimiento.
+input_type_string#:#Cadena de caracteres
+input_type_numerical#:#Numérico
+show_validation_no#:#No
+show_validation_yes_with_vars#:#Sí, con lista de variables
+show_validation_yes_without_vars#:#Sí, sin lista de variables
+show_validation_yes_compact#:#Sí, compacto
+notes_best_solution_message#:#Las notas no tienen la mejor solución
+show_default_prts_settings#:#Valores predeterminados para configuraciones de árboles de retroalimentación
+default_prts_settings#:#Configuraciones estándar para árboles de retroalimentación y nodos
+config_default_prts_message#:#Las configuraciones para árboles de retroalimentación se han cambiado con éxito.
+prt_node_pos_feedback_class#:#Estilo de retroalimentación, si es verdadero
+prt_node_pos_feedback_class_info#:#Seleccione el estilo de retroalimentación cuando la prueba de respuesta de este nodo sea verdadera.
+prt_node_neg_feedback_class#:#Estilo de retroalimentación, si es falso
+prt_node_neg_feedback_class_info#:#Seleccione el estilo de retroalimentación cuando la prueba de respuesta de este nodo sea falsa.
+feedback_styles_settings#:#Configuraciones de estilo de retroalimentación
+feedback_styles_settings#:#Configuraciones de estilo de retroalimentación
+feedback_node_right#:#Correcto
+feedback_node_right_info#:#Tipo de retroalimentación para respuestas correctas
+feedback_node_wrong#:#Incorrecto
+feedback_node_wrong_info#:#Tipo de retroalimentación para respuestas incorrectas
+feedback_solution_hint#:#Pista
+feedback_solution_hint_info#:#Estilo de retroalimentación para pistas de solución
+feedback_extra_info#:#Información
+feedback_extra_info_info#:#Estilo de retroalimentación para información adicional
+feedback_plot_feedback#:#Diagrama
+feedback_plot_feedback_info#:#Estilo de retroalimentación utilizado para diagramas
+config_feedback_styles_changed_message#:#La configuración predeterminada para el estilo de retroalimentación se cambió con éxito.
+feedback_extra_1#:#Parcialmente correcto
+feedback_extra_1_info#:#Estilo de retroalimentación para respuestas parcialmente correctas
+copy_node#:#Copiar nodo
+paste_node#:#Pegar nodo
+copy_prt#:#Copiar árboles de respuestas potenciales
+paste_prt#:#Pegar árboles de respuestas potenciales
+prt_copied_to_clipboard#:#Árboles de respuestas potenciales copiado al portapapeles
+node_copied_to_clipboard#:#Nodo copiado al portapapeles
+node_paste#:#Se ha pegado un nodo en esta pregunta
+prt_paste#:#Se ha pegado un árbole de respuestas potenciales en esta pregunta
+prt_paste_error#:#Hubo un error al pegar el PRT, tal vez el PRT original fue eliminado
+srv_purpose#:#Uso
+srv_purpose_info#:#Seleccione "Ejecución de prueba" para reservar un servidor Maxima exclusivamente para solicitudes críticas durante una prueba, por ejemplo, para exámenes electrónicos. Luego, proporcione un segundo servidor para todas las demás solicitudes ("Creación/Evaluación").
+srv_purpose_run#:#Ejecución de prueba
+srv_purpose_edit#:#Creación/Evaluación
+srv_purpose_any#:#Cualquiera
+srv_address#:#Dirección del servidor
+srv_address_info#:#Ingrese la URL completa del servidor Maxima, incluido el puerto, por ejemplo, "http://localhost:8080/MaximaPool/MaximaPool"
+srv_active_info#:#El servidor puede ser utilizado para llamadas de Maxima
+basic_connection_settings#:#Configuraciones básicas
+server_configuration#:#Configuración del servidor
+add_server#:#Agregar servidor
+edit_server#:#Editar servidor
+delete_server#:#Eliminar servidor
+maxima_command_server#:#Llamada al servidor
+maxima_command_server_info#:#Configure los servidores disponibles en la pestaña <a href="%s">Configuración del servidor</a>
+server_saved#:#La configuración del servidor ha sido guardada.
+server_activated#:#El servidor ha sido activado.
+servers_activated#:#Los servidores han sido activados.
+server_deactivated#:#El servidor ha sido desactivado.
+servers_deactivated#:#Los servidores han sido desactivados.
+no_server_selected#:#Por favor, seleccione un servidor.
+confirm_delete_servers#:#¿Desea eliminar el/los siguiente(s) servidor(es)?
+server_deleted#:#El servidor ha sido eliminado.
+servers_deleted#:#Los servidores han sido eliminados.
+deletion_error_connected_node#:#No puede eliminar este nodo ya que está conectado a un PRT. Por favor, cambie la estructura del PRT para desconectar el nodo antes de eliminarlo.
+import_in_test_error#:#Importar preguntas STACK desde MoodleXML no está permitido en pruebas, por favor impórtelas en un banco de preguntas antes de incluirlas en una prueba.
+feedback_stylesheet_id#:#Estilo de contenido
+feedback_stylesheet_id_info#:#Seleccione el estilo de contenido que se utilizará para la retroalimentación de STACK. Solo se pueden seleccionar estilos de contenido activos. Si no se selecciona un estilo de contenido, se utilizará el estilo de retroalimentación predeterminado. Tenga en cuenta que al cambiar el estilo de contenido, todos los valores en este formulario se restablecerán a los predeterminados.
+feedback_default#:#Estilo de retroalimentación general
+feedback_default_info#:#Seleccione el estilo de retroalimentación para los mensajes de retroalimentación en preguntas STACK. Se utiliza para la sección de un mensaje de retroalimentación de STACK. Dentro de esta sección, las retroalimentaciones de los nodos de un árboles de respuestas potenciales están incrustadas, y pueden tener estilos propios adicionales.
+nodes_feedback#:#Retroalimentación de nodos
+config_prts_changed_message#:#Los cambios han sido aplicados
+input_stars_no_stars#:#No insertar asteriscos
+input_stars_implied#:#Insertar asteriscos solo para multiplicación implícita
+input_stars_singlechar#:#Insertar asteriscos asumiendo nombres de variables de solo un carácter
+input_stars_spaces#:#Insertar asteriscos solo para espacios
+input_stars_implied_spaces#:#Insertar asteriscos para multiplicación implícita y para espacios
+input_type_implied_spaces_single#:#Insertar asteriscos asumiendo nombres de variables de solo un carácter, implícitos y para espacios
+add_node#:#Agregar nodo
+add_prt#:#Agregar árboles de respuestas potenciales
+page_editor_compatibility_info#:#Tenga en cuenta que los cambios realizados a través del editor de páginas de ILIAS para preguntas de Stack no se pueden exportar en formato XML de Moodle. Esta funcionalidad está desarrollada específicamente para el contexto de ILIAS. Familiarícese especialmente con esta limitación si desea utilizar o exportar contenido fuera de ILIAS.
+matrix_syntax_error#:#Su respuesta contiene errores de sintaxis.
+placeholder#:#Marcador de posición
+value#:#Valor
+hint_mode#:#Modo de sugerencia
+debug_info_message#:#Información de depuración (no se muestra en pruebas)
+debug_info_question_variables#:#Variables de pregunta
+debug_info_feedback_variables#:#Variables de retroalimentación
+error_inputs_missing#:#Faltan algunas entradas
+prt_node_feedback#:#Retroalimentación del nodo
+input_delete#:#Eliminar entrada
+actions#:#Acciones
+ui_admin_configuration_defaults_feedback_styles_title#:#Estilos de retroalimentación
+ui_admin_configuration_defaults_feedback_styles_name#:#Nombre del estilo
+ui_admin_configuration_defaults_feedback_styles_style#:#Estilo
+input_must_verify_to_false#:#Como ha seleccionado que no se muestre verificación, se ha desmarcado la opción "Los estudiantes deben verificar".
