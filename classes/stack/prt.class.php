@@ -590,7 +590,7 @@ class stack_potentialresponse_tree_lite {
                 (stack_ans_test_controller::required_atoptions($node->answertest) === 'optional' &&
                 trim($node->testoptions) !== '')) {
             // Simplify these. Mainly the sigfigs as the test has a history of not doing it.
-            $at .= ',ev(' . $node->testoptions . ',simp)';
+            $at .= ',ev(' . (trim($node->testoptions) !== '' ? $node->testoptions : '""') . ',simp)';
         }
 
         if (stack_ans_test_controller::required_raw($node->answertest)) {
