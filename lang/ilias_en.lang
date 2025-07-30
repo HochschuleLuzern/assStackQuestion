@@ -146,13 +146,14 @@ ui_admin_configuration_defaults_section_title_healthcheck_healthcheckplots#:#Hea
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstackmaximaversion#:#Health Checks Stack Maxima version
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstacklibrariesworking#:#Health Checks Stack libraries working
 ui_admin_configuration_quality_healthcheck_button_label#:#Do Health Check
-ui_admin_configuration_quality_check_prt_placeholders_button_label#:#Check PRT placeholders
-ui_admin_configuration_quality_check_prt_placeholders_no_prts#:#The STACK question with ID %s does not have any PRT so its evaluation will always be 0
+ui_admin_configuration_quality_check_prts_button_label#:#Check PRTs
+ui_admin_configuration_quality_check_prt_no_prts#:#The STACK question with ID %s does not have any PRT so its evaluation will always be 0
 ui_admin_configuration_quality_check_prt_placeholders_missing_placeholders#:#The STACK question with ID %s has the following missing PRT placeholders: (%s)
-ui_admin_configuration_quality_check_prt_placeholders_bad_name#:#The STACK question with ID %s has the following PRTs with bad name: (%s)
+ui_admin_configuration_quality_check_bad_name#:#The STACK question with ID %s has the following PRTs with bad name: (%s)
+ui_admin_configuration_quality_check_prt_comma_errors#:#The STACK question with ID %s has the following PRTs with comma errors:
 ui_admin_configuration_quality_check_prt_placeholders_fixed#:#The missing PRT placeholders have been fixed
 ui_admin_configuration_quality_check_prt_names_fixed#:#The bad PRT names have been fixed
-ui_admin_configuration_quality_check_prt_placeholders_all_ok#:#All PRT placeholders are OK
+ui_admin_configuration_quality_check_prts_all_ok#:#All PRTs are OK
 ui_admin_configuration_quality_healthcheck_mbstring_true#:#The PHP mbstring extension is installed and enabled
 ui_admin_configuration_quality_healthcheck_mbstring_false#:#STACK requires the PHP mbstring extension to be used, and it is not installed on the Server where ILIAS is running. STACK questions might not work properly until this is installed.
 ui_author_main_title#:#STACK Question Authoring
@@ -219,7 +220,7 @@ ui_author_randomisation_cannot_delete_active_variant#:#You cannot delete the act
 ui_author_randomisation_sucessfully_on_seeds_generation#:#Seeds were successfully generated
 ui_author_randomisation_failed_on_seeds_generation#:#Failed on seeds generation
 ui_author_randomisation_no_test_case_selected#:#No test case selected
-ui_author_randomisation_ckeck_prt_placeholders_button_label#:#Check PRT placeholders for question pool/test
+ui_author_randomisation_quality_assurance_label#:#Quality assurance
 assStackQuestion#:#STACK Question
 question_imported_successfully#:#Question was imported successfully
 error_importing_question#:#Error importing question
@@ -312,6 +313,10 @@ options_inverse_trigonometric_info#:#Controls how inverse trigonometric function
 options_inverse_trigonometric_cos#:#cos^(-1)(x)
 options_inverse_trigonometric_acos#:#acos(x)
 options_inverse_trigonometric_arccos#:#arccos(x)
+options_logic_symbol#:#Logic symbols
+options_logic_symbol_info#:#Controls how logical symbols should be displayed in CAS output.
+options_logic_symbol_lang#:#Language
+options_logic_symbol_symbol#:#Symbolic
 default_options_settings#:#Default options settings
 input_type#:#Input type#:#
 input_type_info#:#This determines the type of the input element, e.g. form field, true/false, text area.
@@ -415,6 +420,7 @@ edit_question#:#Edit question
 sco_scoring#:#Scoring
 sco_subtitle#:#In this page you can see the evaluation structure of the current question in order to modify the points or check if the question has the points structure you want.
 sco_scoring_form#:#Scoring status
+sco_scoring_form_saved#:#The scoring form has been saved
 sco_current_scoring_form_input#:#Current points
 sco_new_scoring_form_input#:#New points
 sco_show_new_scoring_form_button#:#Show comparison
@@ -422,7 +428,9 @@ sco_set_new_scoring_form_button#:#Save points
 sco_invalid_value#:#The value you entered as new points for this question is not valid.
 sco_prt_name#:# Potential response tree name:
 sco_prt_value#:#Maximum points for this Potential response tree:
-sco_node_name#:#Node name:
+sco_node_name#:#Node name
+sco_node_positive#:#Positive comparison
+sco_node_negative#:#Negative comparison
 message_answernote_part#:#Answer note
 exp_question_note#:#Question note
 exp_general_feedback#:#General feedback
@@ -583,7 +591,7 @@ auth_tip2#:#Click here to read the STACK Question quick authoring guide in Germa
 auth_tip3#:#
 interpreted_by_maxima_as#:#Interpreted by Maxima as:
 interpreted_by_maxima_as_2#:#Your answer was interpreted as follows:
-sco_info#:#On this page, scoring is shown directly in question points. Per each node of each potential response tree, points obtained if node's Answertest is true is shown in green and points obtained if node's Answertest is false is shown in red. In addition per each potential response tree you can check their weight into the question in "Maximum points for this Potential response tree"
+sco_info#:#On this page, scoring is shown directly in question points. Per each node of each potential response tree, points obtained if node's Answer test is true is shown in green and points obtained if node's Answer test is false is shown in red. In addition per each potential response tree you can check their weight into the question in "Maximum points for this Potential response tree"
 castext_info#:#In this field you can use CAS Text. CASText is CAS-enabled text. CASText is simply HTML into which LaTeX mathematics and CAS commands can be embedded. These CAS commands are executed before the question is displayed to the user. Use only simple LaTeX mathematics structures. Only a small part of core LaTeX is supported
 html_info#:#In this field, only HTML elements are allowed, CASText won't be rendered
 casexpression_info#:#In this field you can insert only CAS expressions, not HTML code can be placed here.
@@ -702,3 +710,9 @@ ui_admin_configuration_defaults_feedback_styles_title#:#Feedback styles
 ui_admin_configuration_defaults_feedback_styles_name#:#Style name
 ui_admin_configuration_defaults_feedback_styles_style#:#Style
 input_must_verify_to_false#:#Since you have selected not to show validation, the "Student must verify" option has been deselected.
+uninstall_not_supported#:#Question plugins cannot be uninstalled, to avoid errors try to deactivate it.
+ui_admin_configuration_quality_check_prt_comma_error#:#The PRT <strong>%s</strong> -> Node <strong>%s</strong> has a comma in <strong>%s</strong> and the value must be changed (From <strong>%s</strong> to <strong>%s</strong>).
+ui_admin_configuration_quality_check_prt_comma_errors_fixed#:#The following questions have been fixed:
+ui_admin_configuration_quality_check_prt_comma_errors_fixed_count#:#Comma errors fixed:
+fix#:#Fix
+fix_all_comma_errors#:#Fix all comma errors

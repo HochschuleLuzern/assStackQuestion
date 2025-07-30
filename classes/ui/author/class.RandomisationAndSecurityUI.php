@@ -206,8 +206,8 @@ class RandomisationAndSecurityUI
 
         $html .= $this->renderer->render(
             $this->factory->panel()->standard(
-                $this->language->txt("qpl_qst_xqcas_ui_admin_configuration_quality_check_prt_placeholders_button_label"),
-                $this->factory->button()->standard($this->language->txt("qpl_qst_xqcas_ui_author_randomisation_ckeck_prt_placeholders_button_label"), $this->control->getLinkTargetByClass("assStackQuestionGUI", "checkPrtPlaceholders"))
+                $this->language->txt("qpl_qst_xqcas_ui_author_randomisation_quality_assurance_label"),
+                $this->factory->button()->standard($this->language->txt("qpl_qst_xqcas_ui_admin_configuration_quality_check_prts_button_label"), $this->control->getLinkTargetByClass("assStackQuestionGUI", "checkPrts"))
             )
         );
 
@@ -671,7 +671,7 @@ class RandomisationAndSecurityUI
             $form = $form->withRequest($request);
             $result = $form->getData();
             if ($result) {
-                $saving_info = $this->saveUnitTest($_GET["test_case"], $result, $question);
+                $saving_info = $this->saveUnitTest($_GET["test_case"] ?? null, $result, $question);
             }
         }
 

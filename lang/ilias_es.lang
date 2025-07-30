@@ -147,13 +147,14 @@ ui_admin_configuration_defaults_section_title_healthcheck_healthcheckplots#:#Pru
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstackmaximaversion#:#Prueba de función de versión de Maxima de Stack
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstacklibrariesworking#:#Prueba de función de bibliotecas de Stack funcionando
 ui_admin_configuration_quality_healthcheck_button_label#:#Realizar prueba de función
-ui_admin_configuration_quality_check_prt_placeholders_button_label#:#Verificar marcadores de posición PRT
-ui_admin_configuration_quality_check_prt_placeholders_no_prts#:#La pregunta STACK con el ID %s no tiene PRT, por lo tanto, su calificación siempre será 0.
+ui_admin_configuration_quality_check_prts_button_label#:#Verificar marcadores de posición PRT
+ui_admin_configuration_quality_check_prt_no_prts#:#La pregunta STACK con el ID %s no tiene PRT, por lo tanto, su calificación siempre será 0.
 ui_admin_configuration_quality_check_prt_placeholders_missing_placeholders#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con marcadores de posición faltantes: (%s)
-ui_admin_configuration_quality_check_prt_placeholders_bad_name#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con nombre incorrecto: (%s)
+ui_admin_configuration_quality_check_bad_name#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con nombre incorrecto: (%s)
+ui_admin_configuration_quality_check_prt_comma_errors#:#La pregunta STACK con el ID %s tiene los siguientes PRTs con errores de coma:
 ui_admin_configuration_quality_check_prt_placeholders_fixed#:#Se han añadido los marcadores de posición faltantes.
 ui_admin_configuration_quality_check_prt_names_fixed#:#Se han corregido los nombres incorrectos.
-ui_admin_configuration_quality_check_prt_placeholders_all_ok#:#Todos los PRTs tienen marcadores de posición.
+ui_admin_configuration_quality_check_prts_all_ok#:#Todos los PRTs tienen marcadores de posición.
 ui_admin_configuration_quality_healthcheck_mbstring_true#:#La extensión PHP mbstring está instalada y activada
 ui_admin_configuration_quality_healthcheck_mbstring_false#:#STACK requiere la extensión mbstring de PHP, y no está instalada en el servidor donde se ejecuta ILIAS. Las preguntas de STACK pueden no funcionar correctamente hasta que esto esté instalado.
 ui_author_main_title#:#Autor de preguntas STACK
@@ -222,6 +223,7 @@ ui_author_randomisation_sucessfully_on_seeds_generation#:#Las semillas se genera
 ui_author_randomisation_failed_on_seeds_generation#:#Error al generar las semillas
 ui_author_randomisation_no_test_case_selected#:#No se seleccionó ningún caso de prueba
 ui_author_randomisation_ckeck_prt_placeholders_button_label#:#Verificar marcadores de posición PRT para banco de preguntas/prueba
+ui_author_randomisation_quality_assurance_label#:#Aseguramiento de la calidad
 assStackQuestion#:#Pregunta STACK
 question_imported_successfully#:#La(s) pregunta(s) se importó(aron) con éxito.
 error_importing_question#:#Ocurrió un error durante la importación.
@@ -313,6 +315,10 @@ options_inverse_trigonometric_info#:#Visualización de funciones trigonométrica
 options_inverse_trigonometric_cos#:#cos^(-1)(x)
 options_inverse_trigonometric_acos#:#acos(x)
 options_inverse_trigonometric_arccos#:#arccos(x)
+options_logic_symbol#:#Símbolos lógicos
+options_logic_symbol_info#:#Controla la representación de los símbolos lógicos en la salida CAS.
+options_logic_symbol_lang#:#Lenguaje
+options_logic_symbol_symbol#:#Simbólico
 default_options_settings#:#Configuración predeterminada para opciones de preguntas
 input_type#:#Tipo de entrada
 input_type_info#:#Tipo de elemento de entrada, por ejemplo, campo de formulario, verdadero/falso, campo de texto multilínea.
@@ -416,6 +422,7 @@ edit_question#:#Editar pregunta
 sco_scoring#:#Evaluación
 sco_subtitle#:#En esta página, puede ver la estructura de evaluación de la pregunta para cambiar la puntuación máxima y verificar la asignación de puntos.
 sco_scoring_form#:#Estado de la evaluación
+sco_scoring_form_saved#:#La evaluación fue guardada con éxito.
 sco_current_scoring_form_input#:#Puntuación actual
 sco_new_scoring_form_input#:#Nueva puntuación
 sco_show_new_scoring_form_button#:#Mostrar comparación
@@ -423,7 +430,9 @@ sco_set_new_scoring_form_button#:#Guardar puntuación
 sco_invalid_value#:#La puntuación que ha introducido no es válida para esta pregunta.
 sco_prt_name#:# Nombre del árboles de respuestas potenciales:
 sco_prt_value#:#Puntuación máxima para este árboles de respuestas potenciales:
-sco_node_name#:#Nombre del nodo:
+sco_node_name#:#Nombre del nodo
+sco_node_positive#:#Comparación positiva
+sco_node_negative#:#Comparación negativa
 message_answernote_part#:#Nota de respuesta
 exp_question_note#:#Nota de la pregunta
 exp_general_feedback#:#Retroalimentación general
@@ -705,3 +714,10 @@ ui_admin_configuration_defaults_feedback_styles_title#:#Estilos de retroalimenta
 ui_admin_configuration_defaults_feedback_styles_name#:#Nombre del estilo
 ui_admin_configuration_defaults_feedback_styles_style#:#Estilo
 input_must_verify_to_false#:#Como ha seleccionado que no se muestre verificación, se ha desmarcado la opción "Los estudiantes deben verificar".
+uninstall_not_supported#:#Los plugins de tipo pregunta no pueden ser desinstalados, para evitar errores trata de desactivarlo.
+ui_admin_configuration_quality_check_prt_comma_error#:#El PRT <strong>%s</strong> -> Nodo <strong>%s</strong> tiene una coma en <strong>%s</strong> y el valor debe ser cambiado (De <strong>%s</strong> a <strong>%s</strong>).
+ui_admin_configuration_quality_check_prt_comma_errors_fixed#:#Se han corregido las siguientes preguntas con errores de coma en los PRT:
+ui_admin_configuration_quality_check_prt_comma_errors_fixed_count#:#Errores de coma corregidos:
+fix#:#Corregir
+fix_all_comma_errors#:#Corregir todos los errores de coma
+

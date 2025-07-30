@@ -104,8 +104,8 @@ class PluginConfigurationQualityUI
     private static function getCheckPrtPlaceholderButton(ilPlugin $plugin_object): Standard
     {
         return self::$factory->button()->standard(
-            $plugin_object->txt('ui_admin_configuration_quality_check_prt_placeholders_button_label'),
-            self::$control->getLinkTargetByClass("ilassStackQuestionConfigGUI", "checkPrtPlaceholder")
+            $plugin_object->txt('ui_admin_configuration_quality_check_prts_button_label'),
+            self::$control->getLinkTargetByClass("ilassStackQuestionConfigGUI", "checkPrts")
         );
     }
 }

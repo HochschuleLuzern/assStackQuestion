@@ -19,6 +19,7 @@
  */
 
 //require_once "./Modules/TestQuestionPool/classes/class.ilQuestionsPlugin.php";
+use classes\platform\StackException;
 
 /**
  * STACK Question plugin for ILIAS 4.4+
@@ -50,6 +51,15 @@ class ilassStackQuestionPlugin extends ilQuestionsPlugin
     {
     }
 
+    /**
+     * @throws StackException
+     */
+    public function uninstall(): bool
+    {
+        global $DIC;
+
+        throw new StackException($DIC->language()->txt("qpl_qst_xqcas_uninstall_not_supported"));
+    }
 }
 
 ?>

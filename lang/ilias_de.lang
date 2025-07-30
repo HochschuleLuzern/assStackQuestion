@@ -150,13 +150,14 @@ ui_admin_configuration_defaults_section_title_healthcheck_healthcheckplots#:#Fun
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstackmaximaversion#:#Funktionstest Stack Maxima-Version
 ui_admin_configuration_defaults_section_title_healthcheck_healthchecksstacklibrariesworking#:#Funktionstest Stack Bibliotheken funktionieren
 ui_admin_configuration_quality_healthcheck_button_label#:#Funktionstest durchführen
-ui_admin_configuration_quality_check_prt_placeholders_button_label#:#Überprüfen Sie PRT-Platzhalter
-ui_admin_configuration_quality_check_prt_placeholders_no_prts#:#Die STACK-Frage mit der ID %s hat keine PRT, daher wird ihre Bewertung immer 0 sein.
+ui_admin_configuration_quality_check_prts_button_label#:#Überprüfen Sie PRT-Platzhalter
+ui_admin_configuration_quality_check_prt_no_prts#:#Die STACK-Frage mit der ID %s hat keine PRT, daher wird ihre Bewertung immer 0 sein.
 ui_admin_configuration_quality_check_prt_placeholders_missing_placeholders#:#Die STACK-Frage mit der ID %s hat folgende PRTs mit fehlenden Platzhaltern: (%s)
-ui_admin_configuration_quality_check_prt_placeholders_bad_name#:#Die STACK-Frage mit der ID %s hat die folgenden PRTs mit schlechtem Namen: (%s)
+ui_admin_configuration_quality_check_bad_name#:#Die STACK-Frage mit der ID %s hat die folgenden PRTs mit schlechtem Namen: (%s)
+ui_admin_configuration_quality_check_prt_comma_errors#:#Die STACK-Frage mit der ID %s hat die folgenden PRTs, die Komma-Fehler enthalten:
 ui_admin_configuration_quality_check_prt_placeholders_fixed#:#Die fehlenden Platzhalter wurden hinzugefügt.
 ui_admin_configuration_quality_check_prt_names_fixed#:#Die schlechten Namen wurden korrigiert.
-ui_admin_configuration_quality_check_prt_placeholders_all_ok#:#Alle PRTs haben Platzhalter.
+ui_admin_configuration_quality_check_prts_all_ok#:#Alle PRTs haben Platzhalter.
 ui_admin_configuration_quality_healthcheck_mbstring_true#:#Die PHP mbstring-Erweiterung ist installiert und aktiviert
 ui_admin_configuration_quality_healthcheck_mbstring_false#:#STACK benötigt die PHP mbstring-Erweiterung, und sie ist nicht auf dem Server installiert, auf dem ILIAS läuft. STACK-Fragen funktionieren möglicherweise nicht ordnungsgemäß, bis dies installiert ist.
 ui_author_main_title#:#STACK Fragenautor
@@ -224,7 +225,7 @@ ui_author_randomisation_cannot_delete_active_variant#:#Sie können die aktive Va
 ui_author_randomisation_sucessfully_on_seeds_generation#:#Seeds wurden erfolgreich generiert
 ui_author_randomisation_failed_on_seeds_generation#:#Fehlgeschlagen bei der Generierung von Seeds
 ui_author_randomisation_no_test_case_selected#:#Kein Testfall ausgewählt
-ui_author_randomisation_ckeck_prt_placeholders_button_label#:#PRT-Platzhalter für Fragenpool/Test prüfen
+ui_author_randomisation_quality_assurance_label#:#Qualitätssicherung
 assStackQuestion#:#STACK Frage
 question_imported_successfully#:#Die Frage(n) wurde(n) erfolgreich importiert.
 error_importing_question#:#Beim Import trat ein Fehler auf.
@@ -316,6 +317,10 @@ options_inverse_trigonometric_info#:#Anzeige trigonometrischer Funktionen in der
 options_inverse_trigonometric_cos#:#cos^(-1)(x)
 options_inverse_trigonometric_acos#:#acos(x)
 options_inverse_trigonometric_arccos#:#arccos(x)
+options_logic_symbol#:#Logische Symbole
+options_logic_symbol_info#:#Steuert, wie logische Symbole in der CAS-Ausgabe angezeigt werden sollen.
+options_logic_symbol_lang#:#Sprache
+options_logic_symbol_symbol#:#Symbolisch
 default_options_settings#:#Standard-Einstellungen für Frage-Optionen
 input_type#:#Eingabetyp
 input_type_info#:#Typ des Eingabeelements, z.B. Formularfeld, Wahr/Falsch, mehrzeiliges Textfeld.
@@ -419,6 +424,7 @@ edit_question#:#Frage bearbeiten
 sco_scoring#:#Bewertung
 sco_subtitle#:#Auf dieser Seite sehen Sie die Auswertungsstruktur der Frage, um die maximale Punktzahl zu verändern und die Punktevergabe zu überprüfen.
 sco_scoring_form#:#Bewertungs-Status
+sco_scoring_form_saved#:#Bewertung gespeichert
 sco_current_scoring_form_input#:#Aktuelle Punktzahl
 sco_new_scoring_form_input#:#Neue Punktzahl
 sco_show_new_scoring_form_button#:#Zeige Vergleich
@@ -426,7 +432,9 @@ sco_set_new_scoring_form_button#:#Punktzahl speichern
 sco_invalid_value#:#Die von Ihnen eingegebene Punktzahl ist für diese Frage nicht gültig.
 sco_prt_name#:# Name des Auswertungsbaums:
 sco_prt_value#:#Maximale Punktzahl für diesen Auswertungsbaum:
-sco_node_name#:#Knotenname:
+sco_node_name#:#Knotenname
+sco_node_positive#:#Positiver Vergleich
+sco_node_negative#:#Negativer Vergleich
 message_answernote_part#:#Antwort-Notiz
 exp_question_note#:#Fragen-Notiz
 exp_general_feedback#:#Allgemeines Feedback
@@ -708,3 +716,9 @@ ui_admin_configuration_defaults_feedback_styles_title#:#Feedback-Stile
 ui_admin_configuration_defaults_feedback_styles_name#:#Style name
 ui_admin_configuration_defaults_feedback_styles_style#:#Style
 input_must_verify_to_false#:#Da Sie ausgewählt haben, dass keine Überprüfung angezeigt werden soll, wurde die Option "Schüler müssen überprüfen" abgewählt.
+uninstall_not_supported#:#Frage-Plugins können nicht deinstalliert werden. Um Fehler zu vermeiden, versuchen Sie, sie zu deaktivieren.
+ui_admin_configuration_quality_check_prt_comma_error#:#Der PRT <strong>%s</strong> -> Knoten <strong>%s</strong> hat ein Komma in <strong>%s</strong> und der Wert muss geändert werden (Von <strong>%s</strong> zu <strong>%s</strong>).
+ui_admin_configuration_quality_check_prt_comma_errors_fixed#:#Die folgenden Fragen wurden korrigiert
+ui_admin_configuration_quality_check_prt_comma_errors_fixed_count#:#Kommafehler korrigiert:
+fix#:#Korrigieren
+fix_all_comma_errors#:#Alle Kommafehler korrigieren

@@ -68,10 +68,10 @@ function vle_get_element(id) {
        something with the `formulation`-class. */
     let candidate = document.getElementById(id);
     let iter = candidate;
-    while (iter && !iter.classList.contains('formulation')) {
+    while (iter && !iter.classList.contains('ilc_question_Standard')) {
         iter = iter.parentElement;
     }
-    if (iter && iter.classList.contains('formulation')) {
+    if (iter && iter.classList.contains('ilc_question_Standard')) {
         return candidate;
     }
 

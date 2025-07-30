@@ -622,7 +622,7 @@ $db = $DIC->database();
 if ($db->tableExists('xqcas_configuration')) {
 	$existing_entries = array();
 
-	$result = $db->query('SELECT * FROM xqcas_configuration WHERE group_name = "feedback"');
+	$result = $db->query('SELECT * FROM xqcas_configuration WHERE group_name = "feedback" OR group_name = "feedback_styles"');
 	while ($row = $db->fetchAssoc($result)) {
 		$existing_entries[$row["parameter_name"]] = "";
 	}

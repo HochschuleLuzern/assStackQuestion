@@ -1183,3 +1183,5 @@ $string['castext_debug_no_vars'] = '¡Esta pregunta no tiene variables de pregun
 
 $string['castext_error_header'] = 'Falló la representación del contenido de texto.';
 $string['castext_error_unevaluated'] = 'Este contenido de texto nunca fue evaluado.';
+
+$string['feedback_variable_error'] = 'Error en las variables de respuesta. {$a->error} (El el prt {$a->prt})';

@@ -151,16 +151,15 @@ class stack_cas_castext2_parsons extends stack_cas_castext2_block {
 
         // JS script.
         $r->items[] = new MP_String('<script type="module">');
-
-        $importcode = "\nimport {stack_js} from '" . stack_cors_link('stackjsiframe.min.js') . "';\n";
-        $importcode .= "import {Sortable} from '" . stack_cors_link('sortable.min.js') . "';\n";
+        $importcode = "\nimport stack_js from '" . castext2_parser_utils::stack_cors_link('stackjsiframe.min.js') . "';\n";
+        $importcode .= "import Sortable from '" . castext2_parser_utils::stack_cors_link('sortable.min.js') . "';\n";
         $importcode .= "import {preprocess_steps,
                                 stack_sortable,
                                 add_orientation_listener,
                                 get_iframe_height,
                                 SUPPORTED_CALLBACK_FUNCTIONS
                 } from '" .
-            stack_cors_link('stacksortable.min.js') . "';\n";
+            castext2_parser_utils::stack_cors_link('stacksortable.min.js') . "';\n";
         $r->items[] = new MP_String($importcode);
 
         // Add flip orientation listener to the orientation button.

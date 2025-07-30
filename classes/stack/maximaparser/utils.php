@@ -282,7 +282,7 @@ class maxima_parser_utils {
                                 if ($node->name->value === 'stack_include_contrib') {
                                     $remoteurl = 'contrib://' . $remoteurl;
                                 }
-                                $srccode = stack_fetch_included_content($remoteurl);
+                                $srccode = castext2_parser_utils::stack_fetch_included_content($remoteurl);
                                 if ($srccode === false) {
                                     // Do not give the address in the output.
                                     $errors[] = 'stack_include or stack_include_contrib, could not retrieve: ' . $remoteurl;

@@ -403,7 +403,7 @@ class stack_potentialresponse_tree_lite {
             foreach($fv->get_errors() as $error) {
                 $error_message .= $error . "\n";
             }
-            throw new stack_exception('Error in feedback variables. ' . $error_message);
+            throw new stack_exception(stack_string('feedback_variable_error', ["error" => $error_message, "prt" => $this->name]));
         }
         $fv = $fv->compile($pathprefix . '/fv', $map);
         $r['be'] = $fv['blockexternal'];

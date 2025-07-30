@@ -1,0 +1,11 @@
+.c-table-data__table {
+    width: 100%; !important;
+}
+
+.positiveComparison{
+    background-color: #b5eeac !important;
+}
+
+.negativeComparison{
+    background-color: #FFCCCC !important;
+}

@@ -1422,3 +1422,5 @@ $string['castext_debug_no_vars'] = 'This question has no question variables to d
 
 $string['castext_error_header'] = 'Rendering of text content failed.';
 $string['castext_error_unevaluated'] = 'This text content was never evaluated.';
+
+$string['feedback_variable_error'] = 'Fehler in Feedback-Variablen. {$a->error} (In prt {$a->prt})';

@@ -120,8 +120,7 @@ function get_stack_maxima_latex_replacements()
 			'!XNOR!' => stack_string('equiv_XNOR'),
 			'!IMPLIES!' => stack_string('equiv_IMPLIES'),
 			'!BOOLTRUE!' => stack_string('true'),
-			'!BOOLFALSE!' => stack_string('false'),
-            'leftrightarrow' => '\leftrightarrow',
+			'!BOOLFALSE!' => stack_string('false')
 		];
 	}
 	return $replacements[$lang];

@@ -45,6 +45,7 @@ use ilTaxNodeAssignment;
 use ilTestQuestionPoolInvalidArgumentException;
 use stack_abstract_graph_svg_renderer;
 use stack_ans_test_controller;
+use stack_cas_security;
 use stack_exception;
 use stack_input;
 use stack_input_factory;
@@ -175,6 +176,15 @@ class StackQuestionAuthoringUI
         $this->question->setQuestion($basic["question"]);
 
         $this->question->question_variables = $basic["question_variables"];
+
+        if (empty($basic["question_note"])) {
+            foreach (stack_cas_security::get_all_with_feature('random') as $random) {
+                if (strpos($basic["question_variables"], $random) !== false) {
+                    return $this->renderer->render($this->factory->messageBox()->failure($this->plugin->txt("error_no_question_note")));
+                }
+            }
+        }
+
         $this->question->question_note = $basic["question_note"];
         $this->question->specific_feedback = $basic["specific_feedback"];
 
@@ -189,6 +199,7 @@ class StackQuestionAuthoringUI
             "sqrtsign" => $options["sqrtsign"] ? 1 : 0,
             "complexno" => $options["complexno"],
             "inversetrig" => $options["inversetrig"],
+            "logicsymbol" => $options["logicsymbol"],
             "matrixparens" => $options["matrixparens"]
         ));
 
@@ -425,6 +436,20 @@ class StackQuestionAuthoringUI
             "arccos" => $this->plugin->txt('options_inverse_trigonometric_arccos')
         ], $this->plugin->txt("options_inverse_trigonometric_info"))->withRequired(true)
             ->withValue($this->question->options->get_option("inversetrig"));
+
+        $logicSymbol = $this->question->options->get_option("logicsymbol");
+
+        if ($logicSymbol == "0" || $logicSymbol == 0) {
+            $logicSymbol = "lang";
+        } elseif ($logicSymbol == "1" || $logicSymbol == 1) {
+            $logicSymbol = "symbol";
+        }
+
+        $inputs["logicsymbol"] = $this->factory->input()->field()->select($this->plugin->txt("options_logic_symbol"), [
+            "lang" => $this->plugin->txt('options_logic_symbol_lang'),
+            "symbol" => $this->plugin->txt('options_logic_symbol_symbol'),
+        ], $this->plugin->txt("options_logic_symbol_info"))->withRequired(true)
+            ->withValue($logicSymbol);
         $inputs["matrixparens"] = $this->factory->input()->field()->select($this->plugin->txt("options_matrix_parens"), [
             "[" => "[",
             "(" => "(",

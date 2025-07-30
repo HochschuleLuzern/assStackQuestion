@@ -25,16 +25,16 @@ use stack_utils;
  *
  *********************************************************************/
 
-class StackCheckPrtPlaceholders {
+class StackCheckPrt {
 
     /**
-     * Get the missing placeholders for a given question and errors in prt name
+     * Get errors from the prts of the questions
      * @param array|null $questions
      * @return array
      */
     public static function getErrors(?array $questions = null) :array {
         $placeholders = [];
-        $missing = [];
+        $errors = [];
 
         if (isset($questions) && !empty($questions)) {
             foreach ($questions as $question) {
@@ -49,23 +49,41 @@ class StackCheckPrtPlaceholders {
                 foreach ($data["prts"] as $prt) {
                     if (isset($data["question_text"]) && isset($data["specific_feedback"])) {
                         if (strpos($data["question_text"], "[[feedback:" . $prt . "]]") === false && strpos($data["specific_feedback"], "[[feedback:" . $prt . "]]") === false) {
-                            $missing[$question_id]["title"] = $data["title"];
-                            $missing[$question_id]["missing"][] = $prt;
+                            $errors[$question_id]["title"] = $data["title"];
+                            $errors[$question_id]["missing_placeholders"][] = $prt;
                         } else if (!stack_utils::is_valid_name($prt) && is_numeric($prt)) {
-                            $missing[$question_id]["title"] = $data["title"];
-                            $missing[$question_id]["badname"][] = $prt;
+                            $errors[$question_id]["title"] = $data["title"];
+                            $errors[$question_id]["badname"][] = $prt;
                         }
                     }
                 }
-            } else {
-                $missing[$question_id] = array(
-                    "title" => $data["title"],
-                    "missing" => []
-                );
             }
         }
 
-        return $missing;
+        $comma_errors = assStackQuestionDB::getPrtNodesWithComma();
+
+        foreach ($comma_errors as $question_id => $data) {
+            if (!empty($data["prts"])) {
+                foreach ($data["prts"] as $prt => $node) {
+                    foreach ($node as $node_name => $node_data) {
+                        foreach ($node_data as $key => $value) {
+                            if (strpos($value, ",") !== false) {
+                                $errors[$question_id]["title"] = $data["title"];
+                                $errors[$question_id]["comma_errors"][] = [
+                                    "prt" => $prt,
+                                    "node" => $node_name,
+                                    "key" => $key,
+                                    "value" => $value,
+                                    "fixed_value" => (float) preg_replace('/\.{2,}/', '.', str_replace(",", ".", $value))
+                                ];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $errors;
     }
 
     /**
@@ -73,7 +91,7 @@ class StackCheckPrtPlaceholders {
      * @param string $question_id
      * @return array
      */
-    public static function fixMissings(string $question_id) :array {
+    public static function fixMissingPlaceholders(string $question_id) :array {
         $data = assStackQuestionDB::getPrtsAndPlaceholders($question_id);
 
         if (isset($data) && !empty($data)) {
@@ -140,6 +158,71 @@ class StackCheckPrtPlaceholders {
         return array(
             "title" => $data["title"],
             "changed" => $changed,
+        );
+    }
+
+    public static function fixCommaErrors(string $question_id)
+    {
+        $data = assStackQuestionDB::getPrtNodesWithComma($question_id);
+
+        $changed = "";
+
+        if (!empty($data)) {
+            if (!empty($data["prts"])) {
+                foreach ($data["prts"] as $prt => $node) {
+                    foreach ($node as $node_name => $node_data) {
+                        foreach ($node_data as $key => $value) {
+                            if (strpos($value, ",") !== false) {
+                                $fixed_value = (float) preg_replace('/\.{2,}/', '.', str_replace(",", ".", $value));
+
+                                assStackQuestionDB::updatePrtNodeValue($question_id, (string) $prt, (string) $node_name, (string) $key, $fixed_value);
+
+                                $changed .= $prt . " -> " . $node_name . " -> " . $key . ": " . $value . " -> " . $fixed_value . "<br>";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return array(
+            "title" => $data["title"],
+            "changed" => $changed,
+        );
+    }
+
+    public static function fixCommaErrorsBulky()
+    {
+        $data = assStackQuestionDB::getPrtNodesWithComma();
+
+        $changed = "";
+        $fixed_count = 0;
+
+        if (!empty($data)) {
+            foreach ($data as $question_id => $question_data) {
+                if (!empty($question_data["prts"])) {
+                    foreach ($question_data["prts"] as $prt => $node) {
+                        foreach ($node as $node_name => $node_data) {
+                            foreach ($node_data as $key => $value) {
+                                if (strpos($value, ",") !== false) {
+                                    $fixed_value = (float) preg_replace('/\.{2,}/', '.', str_replace(",", ".", $value));
+
+                                    assStackQuestionDB::updatePrtNodeValue((string) $question_id, (string) $prt, (string) $node_name, (string) $key, $fixed_value);
+
+                                    $fixed_count++;
+
+                                    $changed .= "Question ID: " . $question_id . " - " . $prt . " -> " . $node_name . " -> " . $key . ": " . $value . " -> " . $fixed_value . "<br>";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return array(
+            "changed" => $changed,
+            "fixed_count" => $fixed_count
         );
     }
 }

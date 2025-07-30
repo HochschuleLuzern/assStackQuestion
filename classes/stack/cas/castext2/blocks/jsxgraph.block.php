@@ -33,8 +33,8 @@ class stack_cas_castext2_jsxgraph extends stack_cas_castext2_block {
          * pointing to a particular version.
          */
         'cdn' => [
-            'css' => 'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.5.0/jsxgraph.min.css',
-            'js' => 'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.5.0/jsxgraphcore.min.js'],
+            'css' => 'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.11.1/jsxgraph.min.css',
+            'js' => 'https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.11.1/jsxgraphcore.min.js'],
         'local' => [
             'css' => 'cors://jsxgraph.min.css',
             'js' => 'cors://jsxgraphcore.min.js',

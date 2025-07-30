@@ -82,9 +82,9 @@ class assStackQuestionDB
 			$options['sqrtsign'] = ((int)$row->sqrt_sign);
 			$options['complexno'] = ($row->complex_no);
 			$options['inversetrig'] = ($row->inverse_trig);
+            $options['logicsymbol'] = ($row->logic_symbol);
 			$options['matrixparens'] = ($row->matrix_parens);
 			$options['assumereal'] = ((int)$row->assume_real);
-			$options['logicsymbol'] = ((int)$row->logic_symbol);
 
 			return array('options' => $options, 'ilias_options' => $ilias_options);
 		} else {
@@ -2399,6 +2399,52 @@ class assStackQuestionDB
         return $retval;
     }
 
+    public static function getPrtNodesWithComma(?string $question_id = null) :array {
+        global $DIC;
+        $db = $DIC->database();
+
+        $retval = array();
+
+        if (isset($question_id)) {
+            $result = $db->query("SELECT qpl_questions.title, xqcas_prt_nodes.prt_name, xqcas_prt_nodes.node_name, xqcas_prt_nodes.true_score, xqcas_prt_nodes.true_penalty, xqcas_prt_nodes.false_score, xqcas_prt_nodes.false_penalty FROM qpl_questions LEFT JOIN xqcas_prt_nodes ON qpl_questions.question_id = xqcas_prt_nodes.question_id WHERE qpl_questions.question_id = " . $db->quote($question_id) . " AND (xqcas_prt_nodes.true_score LIKE '%,%' OR xqcas_prt_nodes.true_penalty LIKE '%,%' OR xqcas_prt_nodes.false_score LIKE '%,%' OR xqcas_prt_nodes.false_penalty LIKE '%,%')");
+
+            while ($row = $db->fetchAssoc($result)) {
+                $retval["title"] = $row['title'];
+
+                $retval["prts"][$row['prt_name']][$row['node_name']] = array(
+                    'true_score' => $row['true_score'],
+                    'true_penalty' => $row['true_penalty'],
+                    'false_score' => $row['false_score'],
+                    'false_penalty' => $row['false_penalty']
+                );
+            }
+        } else {
+            $result = $db->query("SELECT qpl_questions.question_id, qpl_questions.title, xqcas_prt_nodes.prt_name, xqcas_prt_nodes.node_name, xqcas_prt_nodes.true_score, xqcas_prt_nodes.true_penalty, xqcas_prt_nodes.false_score, xqcas_prt_nodes.false_penalty FROM qpl_questions LEFT JOIN xqcas_prt_nodes ON qpl_questions.question_id = xqcas_prt_nodes.question_id WHERE qpl_questions.question_type_fi = " . $db->quote(self::getQuestionTypeID()) . " AND (xqcas_prt_nodes.true_score LIKE '%,%' OR xqcas_prt_nodes.true_penalty LIKE '%,%' OR xqcas_prt_nodes.false_score LIKE '%,%' OR xqcas_prt_nodes.false_penalty LIKE '%,%')");
+
+            while ($row = $db->fetchAssoc($result)) {
+                if (!isset($retval[$row['question_id']])) {
+                    $retval[$row['question_id']] = array(
+                        'title' => $row['title'],
+                        'prts' => array()
+                    );
+                }
+
+                if (!isset($retval[$row['question_id']]['prts'][$row['prt_name']])) {
+                    $retval[$row['question_id']]['prts'][$row['prt_name']] = array();
+                }
+
+                $retval[$row['question_id']]['prts'][$row['prt_name']][$row['node_name']] = array(
+                    'true_score' => $row['true_score'],
+                    'true_penalty' => $row['true_penalty'],
+                    'false_score' => $row['false_score'],
+                    'false_penalty' => $row['false_penalty']
+                );
+            }
+        }
+
+        return $retval;
+    }
+
     /**
      * Update the specific feedback for a question
      *
@@ -2486,6 +2532,20 @@ class assStackQuestionDB
         ), array(
             'question_id' => array('integer', $question_id),
             'prt_name' => array('text', $prt)
+        ));
+    }
+
+    public static function updatePrtNodeValue(string $question_id, string $prt, string $node_name, string $key, float $fixed_value)
+    {
+        global $DIC;
+        $db = $DIC->database();
+
+        $db->update("xqcas_prt_nodes", array(
+            $key => array('text', (string)$fixed_value)
+        ), array(
+            'question_id' => array('integer', $question_id),
+            'prt_name' => array('text', $prt),
+            'node_name' => array('text', $node_name)
         ));
     }
 }
