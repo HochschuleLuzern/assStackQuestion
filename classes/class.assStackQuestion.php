@@ -2320,7 +2320,8 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
 
         foreach ($this->getCached('required')[$prt->get_name()] as $name => $ignore) {
             $status = $this->getInputState($name, $response)->status;
-            if (!(stack_input::SCORE == $status || ($accept_valid && stack_input::VALID == $status))) {
+            /* TEMP PATCH HSLU: blank status returned for blank input prevents scoring of other non-blank answers */
+            if (!( empty($status) || stack_input::SCORE == $status || ($accept_valid && stack_input::VALID == $status))) {
                 return false;
             }
         }
