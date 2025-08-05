@@ -479,6 +479,10 @@ class assStackQuestionGUI extends assQuestionGUI
 		$authoring_gui = new StackQuestionAuthoringUI($this->plugin, $this->object, $this);
 
         $this->tpl->setVariable("QUESTION_DATA", $authoring_gui->showAuthoringPanel());
+
+        if ($this->request->int('calling_test') !== 0) {
+            $q_id = $this->saveQuestionToTest();
+        }
 	}
 
 	/* RTE, Javascript, Ajax, jQuery etc. METHODS BEGIN */
