@@ -3802,13 +3802,14 @@ class assStackQuestion extends assQuestion implements iQuestionCondition, ilObjQ
             $value2 = json_decode($row['value2'], true);
             $inputs_empty = true;
 
+            if (isset($value2) && array_key_exists('inputs', $value2)){
             foreach ($value2['inputs'] as $input) {
                 if (isset($input['value']) && $input['value'] !== '' && !(is_array($input['value']) && empty($input['value']))) {
                     $inputs_empty = false;
                     break;
                 }
             }
-
+            }
             if ($row['authorized']) {
                 if (!$inputs_empty) {
                     $return['authorized'] = $row['cnt'] > 0;
