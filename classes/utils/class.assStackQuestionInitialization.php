@@ -35,11 +35,13 @@ use classes\platform\StackConfig;
 
 $CFG = new stdClass;
 // the base url of the installation (without script)
-$CFG->wwwroot = ilUtil::_getHttpPath();
+$CFG->wwwroot = (isset($DIC) && isset($DIC['ilIliasIniFile'])) ? ilUtil::_getHttpPath() : '';
 // the server path of the installation
 $CFG->dirroot = realpath(dirname(__FILE__) . '/../..');
 // the data directory of the plugin
-$CFG->dataroot = ILIAS_WEB_DIR . "/".CLIENT_ID . '/xqcas';
+$CFG->dataroot = (defined('ILIAS_WEB_DIR') && defined('CLIENT_ID'))
+    ? ILIAS_WEB_DIR . "/" . CLIENT_ID . '/xqcas'
+    : '';
 $GLOBALS['CFG'] =& $CFG;
 
 
