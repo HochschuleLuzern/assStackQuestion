@@ -22,35 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
-use core_question\local\bank\random_question_loader;
-
-/**
- * Allows us access to the protected methods for retrieving question ids available to
- * a random question.
- * phpcs:disable Generic.CodeAnalysis.UselessOverridingMethod.Found
- */
-class stack_random_question_loader extends random_question_loader {
-    /**
-     * Get question ids in Moodle 4.2+.
-     * @param array $filters
-     * @return array
-     */
-    public function get_filtered_question_ids(array $filters): array {
-        return parent::get_filtered_question_ids($filters);
-    }
-
-    /**
-     * Get question ids in Moodle 4.1 and below.
-     * @param mixed $categoryid
-     * @param mixed $includesubcategories
-     * @param mixed $tagids
-     * @return array
-     */
-    public function get_question_ids($categoryid, $includesubcategories, $tagids = []): array {
-        return parent::get_question_ids($categoryid, $includesubcategories, $tagids);
-    }
-}
-
 /**
  * Retrieves and formats the response data for a particular question in a particular quiz.
  */
