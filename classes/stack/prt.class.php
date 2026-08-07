@@ -601,11 +601,17 @@ class stack_potentialresponse_tree_lite {
             $at .= ',' . $node->tans;
         }
 
-        if (stack_ans_test_controller::required_atoptions($node->answertest) === true ||
-                (stack_ans_test_controller::required_atoptions($node->answertest) === 'optional' &&
-                trim($node->testoptions) !== '')) {
+        $required = stack_ans_test_controller::required_atoptions($node->answertest);
+        $testoptions = trim($node->testoptions ?? '');
+        if ($required === true && $testoptions === '') {
+            // Some tests, e.g. NumAbsolute and NumRelative, have a documented default option.
+            // Without this we would compile ATNumAbsolute(sans,tans,ev(,simp)), which does not parse.
+            $testoptions = (string) stack_ans_test_controller::default_atoptions($node->answertest);
+        }
+
+        if ($required === true || ($required === 'optional' && $testoptions !== '')) {
             // Simplify these. Mainly the sigfigs as the test has a history of not doing it.
-            $at .= ',ev(' . $node->testoptions . ',simp)';
+            $at .= ',ev(' . $testoptions . ',simp)';
         }
 
         if (stack_ans_test_controller::required_raw($node->answertest)) {
@@ -631,6 +637,15 @@ class stack_potentialresponse_tree_lite {
             $op = str_replace($key, $val, $op);
         }
         $node->testoptions = $op;
+
+        // If the test needs options, and has no default for them, we cannot compile a
+        // sensible call.  Say so instead of failing later on the malformed expression.
+        if (stack_ans_test_controller::required_atoptions($node->answertest) === true &&
+                trim($node->testoptions ?? '') === '' &&
+                stack_ans_test_controller::default_atoptions($node->answertest) === null) {
+            throw new stack_exception('Error in ' . $path . ' answertest parameters. The answer test ' .
+                $node->answertest . ' requires test options, but none are set.');
+        }
 
         // Track inclusions inside CASText.
         $ctincludes = [];

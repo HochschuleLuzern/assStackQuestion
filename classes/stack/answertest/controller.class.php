@@ -124,6 +124,18 @@ class stack_ans_test_controller {
     ];
 
     /**
+     * Default test options for those tests which have a documented default.
+     * These are applied when the author left the options of a test which requires
+     * options empty, both in the constructor below and, for the compiled PRTs, in
+     * stack_potentialresponse_tree_lite::compile_node_answertest().
+     */
+    // phpcs:ignore moodle.Commenting.VariableComment.Missing
+    protected static $defaultatoptions = [
+        'NumAbsolute'          => '0.05',
+        'NumRelative'          => '0.05',
+    ];
+
+    /**
      * The answertest object that the functions call.
      * @var stack_anstest
      */
@@ -201,7 +213,8 @@ class stack_ans_test_controller {
             case 'NumAbsolute':
             case 'NumRelative':
                 if ($casoption === null || !$casoption->get_valid() || '' == $casoption->ast_to_string()) {
-                    $casoption = stack_ast_container::make_from_teacher_source('0.05', '', new stack_cas_security());
+                    $casoption = stack_ast_container::make_from_teacher_source(
+                        self::$defaultatoptions[$anstest], '', new stack_cas_security());
                 }
                 $this->at = new stack_answertest_general_cas($sans, $tans, $anstest, $casoption, $options, $contextsession);
                 break;
@@ -289,6 +302,19 @@ class stack_ans_test_controller {
     public static function required_atoptions($atest) {
         $op = self::$pops[$atest];
         return $op[0];
+    }
+
+    /**
+     * Returns the default test options for this test, or null when the test has no
+     * documented default and hence really needs the author to supply options.
+     *
+     * @return string|null
+     */
+    public static function default_atoptions($atest) {
+        if (array_key_exists($atest, self::$defaultatoptions)) {
+            return self::$defaultatoptions[$atest];
+        }
+        return null;
     }
 
     /**
