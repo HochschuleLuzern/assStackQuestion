@@ -55,6 +55,14 @@ if (!function_exists('getLanguage')) {
 
 }
 
+if (!function_exists('force_current_language')) {
+    function force_current_language(?string $language = null): string
+    {
+        // ILIAS does not switch the language per request, the platform language is always used.
+        return getLanguage();
+    }
+}
+
 if (!function_exists('getString')) {
     function getString($identifier, $string, $a = null)
     {
