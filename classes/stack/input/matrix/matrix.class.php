@@ -398,7 +398,7 @@ class stack_matrix_input extends stack_input {
 
         for ($i = 0; $i < $this->height; $i++) {
             for ($j = 0; $j < $this->width; $j++) {
-                $val = trim($tc[$i][$j]);
+                $val = trim($tc[$i][$j] ?? '');
                 if ('?' == $val) {
                     $val = '';
                 }

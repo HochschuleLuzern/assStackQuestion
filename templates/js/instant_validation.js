@@ -56,8 +56,12 @@ il.instant_validation = new function () {
 				var input_name = name.substr(i + 1);
 				if (input_name.indexOf("_sub_") > -1) {
 					var matrix_input_name = input_name.substr(0, input_name.indexOf("_sub_"));
-					var rows = $('#xqcas_input_matrix_height_' + matrix_input_name).html();
-					var columns = $('#xqcas_input_matrix_width_' + matrix_input_name).html();
+					// Derive the matrix size from the rendered cells
+					var cell_prefix = '#xqcas_' + question_id + '_' + matrix_input_name + '_sub_';
+					var rows = 0;
+					while ($(cell_prefix + rows + '_0').length) rows++;
+					var columns = 0;
+					while ($(cell_prefix + '0_' + columns).length) columns++;
 					var user_response = 'matrix(';
 					for (var r = 0; r < rows; r++) {
 						user_response += '[';
