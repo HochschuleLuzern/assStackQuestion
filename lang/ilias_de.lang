@@ -726,3 +726,4 @@ ui_admin_configuration_quality_check_prt_comma_errors_fixed_count#:#Kommafehler 
 fix#:#Korrigieren
 fix_all_comma_errors#:#Alle Kommafehler korrigieren
 node_deleted#:#Der Knoten wurde gelöscht.
+deletion_error_last_node#:#Ein PRT muss mindestens einen Knoten enthalten. Löschen Sie stattdessen den ganzen PRT.

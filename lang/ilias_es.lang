@@ -723,3 +723,4 @@ ui_admin_configuration_quality_check_prt_comma_errors_fixed_count#:#Errores de c
 fix#:#Corregir
 fix_all_comma_errors#:#Corregir todos los errores de coma
 node_deleted#:#El nodo ha sido eliminado.
+deletion_error_last_node#:#Un PRT debe contener al menos un nodo. Elimine el PRT completo en su lugar.

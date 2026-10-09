@@ -990,6 +990,13 @@ class StackQuestionAuthoringUI
         $prt = $this->question->prts[$prt_name];
 
         $new_nodes = $prt->get_nodes();
+
+        // A PRT without nodes cannot be compiled, so the last node must not be deleted.
+        if (count((array) $new_nodes) <= 1) {
+            $DIC->ui()->mainTemplate()->setOnScreenMessage("failure", $this->plugin->txt('deletion_error_last_node'), true);
+            return false;
+        }
+
         unset($new_nodes[$node_name]);
 
         foreach ($new_nodes as $n) {
